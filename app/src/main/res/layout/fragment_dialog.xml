@@ -1,0 +1,80 @@
+<com.sir.app.material.widget.FlowLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:padding="10dp">
+
+    <com.sir.app.material.widget.Button
+        android:id="@+id/btn_1"
+        android:layout_width="80dp"
+        android:layout_height="@dimen/bt_height"
+        android:layout_margin="5dp"
+        android:text="BUTTON-1"
+        app:v_styleId="@array/button_raise_wave_color" />
+
+    <com.sir.app.material.widget.Button
+        android:id="@+id/btn_2"
+        android:layout_width="80dp"
+        android:layout_height="@dimen/bt_height"
+        android:layout_margin="5dp"
+        android:text="BUTTON-2"
+        app:v_styleId="@array/button_raise_wave_color" />
+
+    <com.sir.app.material.widget.Button
+        android:id="@+id/btn_3"
+        android:layout_width="80dp"
+        android:layout_height="@dimen/bt_height"
+        android:layout_margin="5dp"
+        android:text="BUTTON-3"
+        app:v_styleId="@array/button_raise_wave_color" />
+
+    <com.sir.app.material.widget.Button
+        android:id="@+id/btn_4"
+        android:layout_width="80dp"
+        android:layout_height="@dimen/bt_height"
+        android:layout_margin="5dp"
+        android:text="BUTTON-4"
+        app:v_styleId="@array/button_raise_wave_color" />
+
+    <com.sir.app.material.widget.Button
+        android:id="@+id/btn_5"
+        android:layout_width="80dp"
+        android:layout_height="@dimen/bt_height"
+        android:layout_margin="5dp"
+        android:text="BUTTON-5"
+        app:v_styleId="@array/button_raise_wave_color" />
+
+    <com.sir.app.material.widget.Button
+        android:id="@+id/btn_6"
+        android:layout_width="80dp"
+        android:layout_height="@dimen/bt_height"
+        android:layout_margin="5dp"
+        android:text="BUTTON-6"
+        app:v_styleId="@array/button_raise_wave_color" />
+
+    <com.sir.app.material.widget.Button
+        android:id="@+id/btn_7"
+        android:layout_width="80dp"
+        android:layout_height="@dimen/bt_height"
+        android:layout_margin="5dp"
+        android:text="BUTTON-7"
+        app:v_styleId="@array/button_raise_wave_color" />
+
+    <com.sir.app.material.widget.Button
+        android:id="@+id/btn_8"
+        android:layout_width="80dp"
+        android:layout_height="@dimen/bt_height"
+        android:layout_margin="5dp"
+        android:text="BUTTON-8"
+        app:v_styleId="@array/button_raise_wave_color" />
+
+    <com.sir.app.material.widget.Button
+        android:id="@+id/btn_9"
+        android:layout_width="80dp"
+        android:layout_height="@dimen/bt_height"
+        android:layout_margin="5dp"
+        android:text="BUTTON-9"
+        app:v_styleId="@array/button_raise_wave_color" />
+
+
+</com.sir.app.material.widget.FlowLayout>
