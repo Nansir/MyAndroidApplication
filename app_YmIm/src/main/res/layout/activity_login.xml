@@ -1,0 +1,92 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+    android:background="#ffffffff" >
+
+    <ImageView
+        android:id="@+id/logo"
+        android:layout_width="wrap_content"
+        android:layout_height="100dip"
+        android:layout_centerHorizontal="true"
+        android:paddingTop="34.6dip"
+        android:scaleType="centerInside" >
+    </ImageView>
+
+    <RelativeLayout
+        android:id="@+id/main"
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent"
+        android:layout_below="@+id/logo"
+        android:paddingLeft="80px"
+        android:paddingRight="80px" >
+
+        <EditText
+            android:id="@+id/et_account"
+            android:layout_width="fill_parent"
+            android:layout_height="44.6dip"
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="31dip"
+            android:background="@drawable/shape_line_frame"
+            android:drawableLeft="@mipmap/login_user"
+            android:drawablePadding="18dip"
+            android:gravity="center_vertical"
+            android:hint="请输入用户名"
+            android:inputType="textEmailSubject"
+            android:paddingLeft="12dip"
+            android:paddingRight="12dip"
+            android:singleLine="true"
+            android:textColor="#ff333333"
+            android:textColorHint="#7F7F7F"
+            android:textSize="15sp" />
+
+        <EditText
+            android:id="@+id/et_password"
+            android:layout_width="fill_parent"
+            android:layout_height="44.6dip"
+            android:layout_below="@+id/et_account"
+            android:layout_marginTop="10px"
+            android:layout_centerHorizontal="true"
+            android:background="@drawable/shape_line_frame"
+            android:drawableLeft="@mipmap/login_password"
+            android:drawablePadding="18dip"
+            android:gravity="center_vertical"
+            android:hint="请输入密码"
+            android:inputType="textPassword"
+            android:paddingLeft="12dip"
+            android:paddingRight="12dip"
+            android:singleLine="true"
+            android:textColor="#ff333333"
+            android:textColorHint="#7F7F7F"
+            android:textSize="15sp" />
+
+
+
+        <Button
+            android:id="@+id/btn_login"
+            android:layout_width="fill_parent"
+            android:layout_height="45dip"
+            android:layout_below="@+id/et_password"
+            android:layout_marginTop="18dip"
+            android:background="@color/colorPrimary"
+            android:gravity="center"
+            android:onClick="login"
+            android:text="登录"
+            android:textColor="#ffffff"
+            android:textSize="15sp" />
+
+        <TextView
+            android:id="@+id/copy_right"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_alignParentBottom="true"
+            android:layout_margin="5dp"
+            android:gravity="center"
+            android:text="Copyright ©2015 umeng.com"
+            android:textColor="#e2e2e2"
+            android:textSize="12sp" />
+
+
+    </RelativeLayout>
+
+</RelativeLayout>

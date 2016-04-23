@@ -7,6 +7,7 @@ include ':app_Custom'
 include ':app_Sample'
 include ':app_Message'
 include ':app_TabLyoutDemo'
+include ':app_YmIm'
 
 include ':library_AutoLayout'
 include ':library_Base'

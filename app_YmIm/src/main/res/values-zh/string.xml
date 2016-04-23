@@ -1,0 +1,9 @@
+<resources>
+    <string name="app_name">space</string>
+    <string name="navigation_drawer_open">打开导航抽屉</string>
+    <string name="navigation_drawer_close">关闭导航抽屉</string>
+    <string name="action_settings">设置</string>
+    <string name="hint_out">再按一次,退出程序</string>
+
+
+</resources>
