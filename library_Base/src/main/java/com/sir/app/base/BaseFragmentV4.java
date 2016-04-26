@@ -6,8 +6,6 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
-import com.lidroid.xutils.util.LogUtils;
-
 /**
  * Fragment基类(V4包)
  */
@@ -35,6 +33,7 @@ public abstract class BaseFragmentV4 extends Fragment implements IBaseFragment {
             mContextView = inflater.inflate(bindLayout(), null);
             // 控件初始化
             initView(mContextView);
+            onCreateMapView(savedInstanceState);
             //实例化共通操作
             mBaseOperation = new Operation(getActivity());
         }
@@ -49,5 +48,8 @@ public abstract class BaseFragmentV4 extends Fragment implements IBaseFragment {
     protected Operation getOperation() {
         return this.mBaseOperation;
     }
+    //给地图加载创建的方法
+    protected void onCreateMapView(Bundle savedInstanceState){
 
+    }
 }
