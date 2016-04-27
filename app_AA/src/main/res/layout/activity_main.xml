@@ -1,4 +1,4 @@
-<com.sir.app.SlidingMenu xmlns:android="http://schemas.android.com/apk/res/android"
+<com.sir.app.aa.SlidingMenu xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/id_menu"
@@ -18,4 +18,4 @@
         <include layout="@layout/content_main" />
     </LinearLayout>
 
-</com.sir.app.SlidingMenu>
+</com.sir.app.aa.SlidingMenu>

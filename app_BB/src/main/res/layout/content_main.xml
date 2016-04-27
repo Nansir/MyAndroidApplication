@@ -6,7 +6,7 @@
     android:layout_height="match_parent"
     app:layout_behavior="@string/appbar_scrolling_view_behavior"
     android:orientation="vertical"
-    tools:context=".MainActivity"
+    tools:context=".bb.MainActivity"
     tools:showIn="@layout/app_bar_main">
 
     <com.sir.app.material.widget.TabPageIndicator
@@ -17,7 +17,7 @@
         android:clipToPadding="false"
         app:v_styleId="@array/tab_indicator"/>
 
-    <com.sir.app.CustomViewPager
+    <com.sir.app.bb.widget.CustomViewPager
         android:id="@+id/main_vp"
         android:layout_width="match_parent"
         android:layout_height="match_parent" />
