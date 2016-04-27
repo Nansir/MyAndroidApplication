@@ -19,7 +19,7 @@ android {
 }
 
 dependencies {
-    compile 'com.android.support:cardview-v7:22.2.0'
     compile project(':library_Base')
+    compile 'com.android.support:cardview-v7:22.2.0'
 }
 

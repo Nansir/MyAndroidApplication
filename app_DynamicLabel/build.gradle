@@ -1,13 +1,15 @@
 apply plugin: 'com.android.application'
 
 android {
-    compileSdkVersion 19
-    buildToolsVersion "23.0.3"
+    compileSdkVersion COMPILE_SDK_VERSION
+    buildToolsVersion BUILD_TOOLS_VERSION
 
     defaultConfig {
         applicationId "com.example.topnewgrid"
-        minSdkVersion 7
-        targetSdkVersion 18
+        minSdkVersion MIN_SDK_VERSION
+        targetSdkVersion TARGET_SDK_VERSION
+        versionCode 1
+        versionName "1.0"
     }
 
     buildTypes {
@@ -19,5 +21,7 @@ android {
 }
 
 dependencies {
-    compile 'com.android.support:support-v4:19.1.0'
+    compile fileTree(dir: 'libs', include: ['*.jar'])
+    testCompile 'junit:junit:4.12'
+    compile 'com.android.support:support-v4:23.3.0'
 }

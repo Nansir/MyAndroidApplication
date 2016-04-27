@@ -19,6 +19,7 @@ android {
 }
 
 dependencies {
+    compile fileTree(dir: 'libs', include: ['*.jar'])
     compile project(':library_Base')
     compile 'com.nineoldandroids:library:2.4.0'
 }
