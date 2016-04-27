@@ -2,11 +2,9 @@ package com.sir.app.autolayout.widget;
 
 import android.content.Context;
 import android.content.res.TypedArray;
-
-import android.support.v7.view.menu.ActionMenuItemView;
+import android.support.v7.internal.view.menu.ActionMenuItemView;
 import android.util.AttributeSet;
 import android.util.TypedValue;
-
 
 import com.sir.app.autolayout.utils.AutoUtils;
 import com.sir.app.autolayout.utils.DimenUtils;
@@ -14,7 +12,7 @@ import com.sir.app.autolayout.utils.DimenUtils;
 /**
  * Created by hupei on 2016/3/7 14:44.
  */
-public class AutoActionMenuItemView extends ActionMenuItemView {
+public class AutoActionMenuItemView extends ActionMenuItemView  {
     private static final int NO_VALID = -1;
     private int mMenuTextSize;
 

@@ -84,7 +84,7 @@ public class AutoTabLayout extends TabLayout
 
     private void setUpTabTextSize(Tab tab)
     {
-        if (mTextSize == NO_VALID || tab.getCustomView() != null) return;
+        if (mTextSize == NO_VALID || tab.getContentDescription() != null) return;
 
         ViewGroup tabGroup = (ViewGroup) getChildAt(0);
         ViewGroup tabContainer = (ViewGroup) tabGroup.getChildAt(tab.getPosition());

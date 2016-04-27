@@ -26,6 +26,6 @@ public class AutoLayoutWidgetActivity extends AutoLayoutActivity {
         }
 
         if (view != null) return view;
-        return super.onCreateView(name, context, attrs);
+        return super.onCreateView(view,name, context, attrs);
     }
 }
