@@ -33,6 +33,7 @@ makeJar.dependsOn(build)
 
 
 dependencies {
-    compile project(':library_Base')
+    compile fileTree(dir: 'libs', include: ['*.jar'])
+
     compile 'com.squareup.okhttp:okhttp:2.5.0'
 }

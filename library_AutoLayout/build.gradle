@@ -19,5 +19,7 @@ android {
 }
 dependencies {
     compile fileTree(dir: 'libs', include: ['*.jar'])
-    compile 'com.android.support:appcompat-v7:22.2.0'
+
+    //v7-23.3.0版本有几个方法私有化了。
+    compile 'com.android.support:appcompat-v7:23.0.1'
 }

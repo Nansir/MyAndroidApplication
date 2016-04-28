@@ -27,5 +27,6 @@ dependencies {
     testCompile 'junit:junit:4.12'
     compile 'com.squareup.picasso:picasso:2.5.0'
     compile 'com.squareup.leakcanary:leakcanary-android:1.3.1'
+
     compile project(':library_Widget')
 }
