@@ -53,8 +53,9 @@ public class MainActivity extends BaseActivity
 
     private String[] mOptionTitles = {"列表", "地图"};
     private SegmentTabLayout mtlOption;
-
     private ActionBar myActionBar;
+
+
 
 
     @Override

@@ -3,7 +3,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
-    <com.sir.app.widget.FABToolbarLayout
+    <com.sir.app.a.widget.FABToolbarLayout
         android:id="@+id/fabtoolbar"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
@@ -24,7 +24,7 @@
                 android:layout_height="match_parent" />
         </android.support.v4.widget.SwipeRefreshLayout>
 
-        <com.sir.app.widget.FABContainer
+        <com.sir.app.a.widget.FABContainer
             android:id="@+id/fabtoolbar_container"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -38,7 +38,7 @@
                 android:src="@drawable/abc_ic_menu_share_mtrl_alpha"
                 app:fabSize="normal" />
 
-        </com.sir.app.widget.FABContainer>
+        </com.sir.app.a.widget.FABContainer>
 
         <LinearLayout
             android:id="@+id/fabtoolbar_toolbar"
@@ -81,6 +81,6 @@
 
         </LinearLayout>
 
-    </com.sir.app.widget.FABToolbarLayout>
+    </com.sir.app.a.widget.FABToolbarLayout>
 
 </RelativeLayout>

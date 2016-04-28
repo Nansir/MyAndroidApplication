@@ -1,4 +1,4 @@
-package com.sir.app;
+package com.sir.app.a;
 
 import android.content.Context;
 import android.support.design.widget.FloatingActionButton;
@@ -7,6 +7,7 @@ import android.support.v7.widget.Toolbar;
 import android.view.View;
 import android.widget.ImageView;
 
+import com.sir.app.R;
 import com.sir.app.base.BaseActivity;
 
 /**

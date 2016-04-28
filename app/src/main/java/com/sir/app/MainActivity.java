@@ -23,6 +23,7 @@ import com.sir.app.fragment.ProgressFragment;
 import com.sir.app.fragment.SwitchesFragment;
 import com.sir.app.material.app.ThemeManager;
 import com.sir.app.material.widget.TabPageIndicator;
+import com.sir.app.widget.CustomViewPager;
 
 import java.util.ArrayList;
 
@@ -41,8 +42,7 @@ public class MainActivity extends BaseActivity
 
     @Override
     public int bindLayout() {
-        //使用到app_Widget初始化主题信息
-        ThemeManager.init(this, 2, 0, null);
+
         return R.layout.activity_main;
     }
 
@@ -63,7 +63,7 @@ public class MainActivity extends BaseActivity
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
         ActionBarDrawerToggle toggle = new ActionBarDrawerToggle(
                 this, drawer, toolbar, R.string.navigation_drawer_open, R.string.navigation_drawer_close);
-        drawer.setDrawerListener(toggle);
+        drawer.addDrawerListener(toggle);
         toggle.syncState();
 
         NavigationView navigationView = (NavigationView) findViewById(R.id.nav_view);

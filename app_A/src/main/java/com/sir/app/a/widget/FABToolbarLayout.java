@@ -1,4 +1,4 @@
-package com.sir.app.widget;
+package com.sir.app.a.widget;
 
 import android.animation.Animator;
 import android.animation.AnimatorListenerAdapter;
@@ -22,7 +22,7 @@ import android.widget.ImageView;
 import android.widget.RelativeLayout;
 
 import com.sir.app.R;
-import com.sir.app.util.FABExpandAnimationUtils;
+import com.sir.app.a.util.FABExpandAnimationUtils;
 
 import java.util.ArrayList;
 import java.util.List;

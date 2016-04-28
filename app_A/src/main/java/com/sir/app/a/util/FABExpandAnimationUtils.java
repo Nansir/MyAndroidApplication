@@ -1,4 +1,4 @@
-package com.sir.app.util;
+package com.sir.app.a.util;
 
 import android.animation.Animator;
 import android.animation.AnimatorListenerAdapter;

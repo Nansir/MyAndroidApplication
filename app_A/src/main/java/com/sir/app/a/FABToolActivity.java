@@ -1,28 +1,23 @@
-package com.sir.app;
+package com.sir.app.a;
 
 import android.content.Context;
 import android.os.Handler;
 import android.os.Message;
 import android.support.v4.widget.SwipeRefreshLayout;
 import android.view.LayoutInflater;
-import android.view.MotionEvent;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.AdapterView;
-import android.widget.ArrayAdapter;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.sir.app.R;
 import com.sir.app.base.BaseActivity;
 import com.sir.app.base.BaseAdapter;
 import com.sir.app.base.tools.ToolAlert;
 import com.sir.app.base.tools.ToolResource;
 import com.sir.app.material.widget.ListViewExt;
-import com.sir.app.widget.FABToolbarLayout;
-
-import java.util.concurrent.Executor;
-import java.util.concurrent.ExecutorService;
-import java.util.concurrent.Executors;
+import com.sir.app.a.widget.FABToolbarLayout;
 
 /**
  * Created by zhuyinan on 2016/1/7.

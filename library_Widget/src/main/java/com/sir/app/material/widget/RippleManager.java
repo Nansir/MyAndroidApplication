@@ -38,13 +38,13 @@ public final class RippleManager implements View.OnClickListener, Runnable {
         mView = v;
 
         TypedArray a = context.obtainStyledAttributes(attrs, R.styleable.RippleView, defStyleAttr, defStyleRes);
-        int rippleStyle = a.getResourceId(R.styleable.RippleView_rd_style, 0);
+        int rippleStyle = a.getResourceId(R.styleable.RippleManager_rd_style, 0);
         RippleDrawable drawable = null;
 
         if (rippleStyle != 0)
             drawable = new RippleDrawable.Builder(context, rippleStyle).backgroundDrawable(getBackground(mView)).build();
         else {
-            boolean rippleEnable = a.getBoolean(R.styleable.RippleView_rd_enable, false);
+            boolean rippleEnable = a.getBoolean(R.styleable.RippleManager_rd_enable, false);
             if (rippleEnable)
                 drawable = new RippleDrawable.Builder(context, attrs, defStyleAttr, defStyleRes).backgroundDrawable(getBackground(mView)).build();
         }

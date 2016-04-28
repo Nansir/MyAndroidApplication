@@ -1,4 +1,4 @@
-package com.sir.app;
+package com.sir.app.a;
 
 import android.content.Context;
 import android.support.design.widget.FloatingActionButton;
@@ -12,6 +12,7 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 
+import com.sir.app.R;
 import com.sir.app.base.BaseActivity;
 
 import butterknife.OnClick;
