@@ -1,6 +1,6 @@
 package com.sir.app.base.tools;
 
-import com.lidroid.xutils.util.LogUtils;
+import com.orhanobut.logger.Logger;
 
 import java.text.DateFormat;
 import java.text.ParseException;
@@ -126,7 +126,7 @@ public class ToolDateTime extends BaseTool {
         try {
             returnDate = dateFormat.parse(strDate);
         } catch (ParseException e) {
-            LogUtils.e("解析日期失败", e);
+          Logger.e("解析日期失败", e);
         }
         return returnDate;
 
@@ -159,7 +159,7 @@ public class ToolDateTime extends BaseTool {
                 flag = true;
             }
         } catch (Exception e) {
-            LogUtils.e("比较日期失败" + e.getMessage(), e);
+            //LogUtils.e("比较日期失败" + e.getMessage(), e);
         }
         return flag;
     }

@@ -1,5 +1,11 @@
 package com.sir.app.base.tools;
 
+import android.content.Context;
+import android.graphics.Bitmap;
+import android.os.Environment;
+import android.os.StatFs;
+import android.util.Log;
+
 import java.io.BufferedReader;
 import java.io.BufferedWriter;
 import java.io.ByteArrayOutputStream;
@@ -13,14 +19,6 @@ import java.io.OutputStream;
 import java.io.OutputStreamWriter;
 import java.util.ArrayList;
 import java.util.List;
-
-import android.content.Context;
-import android.graphics.Bitmap;
-import android.os.Environment;
-import android.os.StatFs;
-import android.util.Log;
-
-import com.lidroid.xutils.util.LogUtils;
 
 /**
  * 文件工具类
@@ -127,7 +125,7 @@ public class ToolFile extends BaseTool{
 			}
 			reader.close();
 		} catch (IOException e) {
-			LogUtils.e(e.getMessage(), e);
+			//LogUtils.e(e.getMessage(), e);
 		} finally {
 			if (reader != null) {
 				reader.close();
@@ -160,7 +158,7 @@ public class ToolFile extends BaseTool{
 			}
 			reader.close();
 		} catch (IOException e) {
-			LogUtils.e(e.getMessage(), e);
+			//LogUtils.e(e.getMessage(), e);
 		} finally {
 			if (reader != null) {
 				reader.close();
@@ -272,7 +270,7 @@ public class ToolFile extends BaseTool{
 				flag = true;
 			}
 		} catch (Exception e) {
-			LogUtils.e("判断文件失败：" + e.getMessage(), e);
+			//LogUtils.e("判断文件失败：" + e.getMessage(), e);
 		}
 
 		return flag;
@@ -337,7 +335,7 @@ public class ToolFile extends BaseTool{
 				sb.append(tempString);
 			}
 		} catch (IOException e) {
-			LogUtils.e(e.getMessage(), e);
+			//LogUtils.e(e.getMessage(), e);
 		} finally {
 			if (reader != null) {
 				reader.close();
@@ -362,7 +360,7 @@ public class ToolFile extends BaseTool{
 			result = new String(buffer, "UTF-8");
 			is.close();
 		} catch (Exception e) {
-			LogUtils.e(e.getMessage(), e);
+			//LogUtils.e(e.getMessage(), e);
 		}
 		return result;
 	}
@@ -382,7 +380,7 @@ public class ToolFile extends BaseTool{
 			result = new String(buffer, "UTF-8");
 			is.close();
 		} catch (Exception e) {
-			LogUtils.e(e.getMessage(), e);
+			//LogUtils.e(e.getMessage(), e);
 		}
 		return result;
 	}
@@ -404,7 +402,7 @@ public class ToolFile extends BaseTool{
 				list.add(str);
 			}
 		} catch (IOException e) {
-			LogUtils.e(e.getMessage(), e);
+			//LogUtils.e(e.getMessage(), e);
 		}
 		return list;
 	}
@@ -426,7 +424,7 @@ public class ToolFile extends BaseTool{
 			outStream.close();
 
 		} catch (Exception e) {
-			LogUtils.e(e.getMessage(), e);
+			//LogUtils.e(e.getMessage(), e);
 		}
 	}
 
@@ -444,7 +442,7 @@ public class ToolFile extends BaseTool{
 			outStream.close();
 
 		} catch (Exception e) {
-			LogUtils.e(e.getMessage(), e);
+			//LogUtils.e(e.getMessage(), e);
 		}
 	}
 
@@ -463,7 +461,7 @@ public class ToolFile extends BaseTool{
 			outStream.write(content);
 			outStream.close();
 		} catch (Exception e) {
-			LogUtils.e(e.getMessage(), e);
+			//LogUtils.e(e.getMessage(), e);
 		}
 	}
 
@@ -542,7 +540,7 @@ public class ToolFile extends BaseTool{
 			outputStream.flush();
 			return mFile;
 		} catch (IOException e) {
-			LogUtils.e("写入文件失败，原因：" + e.getMessage(), e);
+			//LogUtils.e("写入文件失败，原因：" + e.getMessage(), e);
 			throw e;
 		} finally {
 			try {

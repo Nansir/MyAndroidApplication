@@ -1,15 +1,11 @@
 package com.sir.app.base;
 
 import android.annotation.SuppressLint;
-import android.app.Activity;
 import android.app.Fragment;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-
-import com.lidroid.xutils.util.LogUtils;
 
 /**
  * Fragment基类
@@ -28,7 +24,6 @@ public abstract class BaseFragment extends Fragment implements IBaseFragment {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-        LogUtils.d("BaseFragment-->onCreateView()");
         //渲染视图View(防止切换时重绘View)
         if (null != mContextView) {
             ViewGroup parent = (ViewGroup) mContextView.getParent();

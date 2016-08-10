@@ -12,13 +12,22 @@ import android.net.NetworkInfo;
 import android.provider.Settings;
 import android.util.Log;
 
+import com.orhanobut.logger.Logger;
+
+import org.apache.http.conn.util.InetAddressUtils;
+
+import java.net.InetAddress;
+import java.net.NetworkInterface;
+import java.net.SocketException;
+import java.util.Enumeration;
+
 /**
  * 基于静态内部类实现的单例，保证线程安全的网络信息工具类 <per> 使用该工具类之前，记得在AndroidManifest.xml添加权限许可 <xmp>
  * <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
  * </xmp> </per>
  * 
  * 安卓判断网络状态，只需要在相应的Activity的相关方法（onCreat/onResum）调用一行代码即可
- * NetWorkUtils.getInstance(getActivity()).validateNetWork();
+ * ToolNetwork.isAvailable.validateNetWork();
  * 
  */
 @SuppressLint("DefaultLocale")
@@ -69,7 +78,6 @@ public class ToolNetwork extends BaseTool{
 	 * 检查当前环境网络是否可用，不可用跳转至开启网络界面,不设置网络强制关闭当前Activity
 	 */
 	public static void validateNetWork() {
-
 		if (!isConnected()) {
 			Builder dialogBuilder = new AlertDialog.Builder(mContext);
 			dialogBuilder.setTitle("网络设置");
@@ -121,5 +129,34 @@ public class ToolNetwork extends BaseTool{
 
 		return "";
 	}
-	
+
+	/**
+	 * 获取IP地址
+	 * @return
+     */
+	public static String getLocalIpAddress() {
+		try {
+			Enumeration<NetworkInterface> en = NetworkInterface
+					.getNetworkInterfaces();
+			// 遍历所用的网络接口
+			while (en.hasMoreElements()) {
+				NetworkInterface nif = en.nextElement();// 得到每一个网络接口绑定的所有ip
+				Enumeration<InetAddress> inet = nif.getInetAddresses();
+				// 遍历每一个接口绑定的所有ip
+				while (inet.hasMoreElements()) {
+					InetAddress ip = inet.nextElement();
+					if (!ip.isLoopbackAddress()
+							&& InetAddressUtils.isIPv4Address(ip
+							.getHostAddress())) {
+						return ip.getHostAddress();
+					}
+				}
+			}
+		} catch (SocketException e) {
+			Logger.e(e, e.getMessage());
+		}
+		return null;
+	}
+
+
 }

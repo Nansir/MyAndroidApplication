@@ -6,6 +6,8 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
+import butterknife.ButterKnife;
+
 /**
  * Fragment基类(V4包)
  */
@@ -31,9 +33,11 @@ public abstract class BaseFragmentV4 extends Fragment implements IBaseFragment {
             }
         } else {
             mContextView = inflater.inflate(bindLayout(), null);
+
+            ButterKnife.bind(this,mContextView);
+
             // 控件初始化
             initView(mContextView);
-            onCreateMapView(savedInstanceState);
             //实例化共通操作
             mBaseOperation = new Operation(getActivity());
         }
@@ -48,8 +52,12 @@ public abstract class BaseFragmentV4 extends Fragment implements IBaseFragment {
     protected Operation getOperation() {
         return this.mBaseOperation;
     }
-    //给地图加载创建的方法
-    protected void onCreateMapView(Bundle savedInstanceState){
 
+
+    @Override
+    public void onDestroy() {
+        super.onDestroy();
+        ButterKnife.unbind(this);//解绑
     }
+
 }

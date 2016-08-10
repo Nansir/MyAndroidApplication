@@ -20,6 +20,7 @@
     <string name="update">Update</string>
     <string name="upload">Upload</string>
 
+    <string name="download_url">null</string>
 
   	
 </resources>

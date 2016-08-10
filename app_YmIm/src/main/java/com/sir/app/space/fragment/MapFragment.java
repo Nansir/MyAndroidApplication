@@ -3,13 +3,9 @@ package com.sir.app.space.fragment;
 import android.content.Context;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
-import android.view.LayoutInflater;
 import android.view.View;
-import android.view.ViewGroup;
 
 import com.amap.api.maps.AMap;
-import com.amap.api.maps.AMapOptions;
-import com.amap.api.maps.CameraUpdateFactory;
 import com.amap.api.maps.MapView;
 import com.amap.api.maps.UiSettings;
 import com.lidroid.xutils.util.LogUtils;
@@ -42,7 +38,8 @@ public class MapFragment extends BaseFragmentV4 implements View.OnClickListener{
 
 
     @Override
-    public void onCreateMapView(Bundle savedInstanceState) {
+    public void onCreate(@Nullable Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
         mMapView.onCreate(savedInstanceState);
     }
 

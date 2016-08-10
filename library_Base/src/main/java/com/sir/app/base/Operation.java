@@ -1,7 +1,5 @@
 package com.sir.app.base;
 
-import java.io.Serializable;
-
 import android.app.Activity;
 import android.content.Intent;
 import android.database.Cursor;
@@ -13,6 +11,8 @@ import android.util.DisplayMetrics;
 import com.sir.app.base.common.BaseApplication;
 import com.sir.app.base.config.SysEnv;
 import com.sir.app.base.data.DTO;
+
+import java.io.Serializable;
 
 /**
  * 基本的操作共通抽取
@@ -59,8 +59,9 @@ public class Operation {
 	 * @param value
 	 *            数据传输对象
 	 */
-	public void addParameter(DTO<?, ?> value) {
+	public Operation addParameter(DTO<?, ?> value) {
 		mIntent.putExtra(SysEnv.ACTIVITY_DTO_KEY, value);
+		return this;
 	}
 
 	/**
@@ -71,8 +72,9 @@ public class Operation {
 	 * @param value
 	 *            数据传输对象
 	 */
-	public void addParameter(String key, DTO<?, ?> value) {
+	public Operation addParameter(String key, DTO<?, ?> value) {
 		mIntent.putExtra(key, value);
+		return this;
 	}
 
 	/**
@@ -83,8 +85,9 @@ public class Operation {
 	 * @param value
 	 *            数据传输对象
 	 */
-	public void addParameter(String key, Bundle value) {
+	public Operation addParameter(String key, Bundle value) {
 		mIntent.putExtra(key, value);
+		return  this;
 	}
 
 	/**
@@ -95,8 +98,9 @@ public class Operation {
 	 * @param value
 	 *            数据传输对象
 	 */
-	public void addParameter(String key, Serializable value) {
+	public Operation addParameter(String key, Serializable value) {
 		mIntent.putExtra(key, value);
+		return this;
 	}
 
 	/**
@@ -107,8 +111,9 @@ public class Operation {
 	 * @param value
 	 *            数据传输对象
 	 */
-	public void addParameter(String key, String value) {
+	public Operation addParameter(String key, String value) {
 		mIntent.putExtra(key, value);
+		return this;
 	}
 
 	/**
@@ -148,8 +153,9 @@ public class Operation {
 	 * @param value
 	 *            数据传输对象
 	 */
-	public void addGloableAttribute(String strKey, Object value) {
+	public Operation addGloableAttribute(String strKey, Object value) {
 		BaseApplication.assignData(strKey, value);
+		return this;
 	}
 
 	/**

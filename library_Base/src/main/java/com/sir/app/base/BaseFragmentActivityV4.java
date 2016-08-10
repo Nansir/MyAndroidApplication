@@ -1,17 +1,16 @@
 package com.sir.app.base;
 
-import java.lang.ref.WeakReference;
-
 import android.app.Activity;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v4.app.FragmentActivity;
 import android.view.MenuItem;
 
-import butterknife.ButterKnife;
-
-import com.lidroid.xutils.util.LogUtils;
 import com.sir.app.base.common.BaseApplication;
+
+import java.lang.ref.WeakReference;
+
+import butterknife.ButterKnife;
 
 public abstract class BaseFragmentActivityV4 extends FragmentActivity implements
         IBaseActivity {
