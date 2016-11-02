@@ -1,0 +1,10 @@
+[
+    {
+        "merged": "E:\\StudioWorkspace-2\\MyApplication\\app_Widget\\build\\intermediates\\res\\merged\\debug\\xml\\nav_states.xml",
+        "source": "E:\\StudioWorkspace-2\\MyApplication\\app_Widget\\build\\intermediates\\exploded-aar\\MyApplication\\library_Widget\\unspecified\\res\\xml\\nav_states.xml"
+    },
+    {
+        "merged": "E:\\StudioWorkspace-2\\MyApplication\\app_Widget\\build\\intermediates\\res\\merged\\debug\\xml\\fab_icon_states.xml",
+        "source": "E:\\StudioWorkspace-2\\MyApplication\\app_Widget\\src\\main\\res\\xml\\fab_icon_states.xml"
+    }
+]

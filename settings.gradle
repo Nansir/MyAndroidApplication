@@ -1,15 +1,10 @@
-include ':app', ':library_Vitamio', ':library_Mp3Recorder'
-include ':app_VRLive'
+
 include ':app_ZXing'
 include ':app_Base'
 include ':app_A'
-include ':app_B'
 include ':app_AA'
-include ':app_BB'
 include ':app_Web'//Android服务器
-include ':app_YmIm'//即时通讯
-include ':app_Custom'
-include ':app_Sample'
+include ':app_Widget'
 include ':app_Message'
 include ':app_Face'
 include ':app_DynamicGrid'
@@ -28,9 +23,6 @@ include ':library_DataBase'
 include ':library_Gridview'
 include ':library_VRLive'
 include ':library_Player'
-
-
-include ':library_DL'
-include ':app_MainPlugina'
-include ':app_MainPluginb'
-include ':app_MainHost'
+include ':library_Vitamio'
+include ':library_Mp3Recorder'
+include ':library_StateLayout'

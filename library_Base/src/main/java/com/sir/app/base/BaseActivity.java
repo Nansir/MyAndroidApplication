@@ -64,15 +64,8 @@ public abstract class BaseActivity extends AutoLayoutActivity implements IBaseAc
 
 
     @Override
-    protected void onResume() {
-        super.onResume();
-        resume();
-    }
-
-    @Override
     protected void onDestroy() {
         super.onDestroy();
-        destroy();
         ButterKnife.unbind(this);// 解绑
         mApplication.removeTask(context);
     }
