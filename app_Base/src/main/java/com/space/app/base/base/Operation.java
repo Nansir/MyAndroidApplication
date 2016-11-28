@@ -1,6 +1,7 @@
 package com.space.app.base.base;
 
 import android.app.Activity;
+import android.content.ComponentName;
 import android.content.Intent;
 import android.database.Cursor;
 import android.net.Uri;
@@ -36,7 +37,6 @@ public class Operation {
 	public void forward(Class<? extends Activity> activity) {
 		mIntent.setClass(mContext, activity);
 		mContext.startActivity(mIntent);
-
 	}
 
 
@@ -182,6 +182,20 @@ public class Operation {
 	public void launchService(Class<?> service) {
 		Intent intent = new Intent(mContext, service);
 		mContext.startService(intent);
+	}
+
+
+	/**
+	 * 启动一个APP
+	 * @param pkg 包名
+	 * @param cls 雷鸣
+     */
+	public void startAPP(String pkg,String cls){
+		mIntent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+		ComponentName comp = new ComponentName(pkg, cls);
+		mIntent.setComponent(comp);
+		mIntent.setAction("android.intent.action.VIEW");
+		mContext.startActivity(mIntent);
 	}
 
 	/**

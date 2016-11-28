@@ -79,13 +79,4 @@ public class TabLayoutAcivity extends BaseActivity {
         }
     }
 
-    @Override
-    public void resume() {
-
-    }
-
-    @Override
-    public void destroy() {
-
-    }
 }

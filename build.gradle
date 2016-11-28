@@ -5,7 +5,7 @@ buildscript {
         jcenter()
     }
     dependencies {
-        classpath 'com.android.tools.build:gradle:2.2.0'
+        classpath 'com.android.tools.build:gradle:2.2.2'
 
         // NOTE: Do not place your application dependencies here; they belong
         // in the individual module build.gradle files
@@ -16,15 +16,15 @@ allprojects {
     repositories {
         jcenter()
     }
-    def supportVersion="23.3.0"
-    def designVersion="23.3.0"
+    def supportVersion="25.0.1"
+    def designVersion="25.0.1"
 
     //版本控制
     ext {
-        COMPILE_SDK_VERSION = 23
-        BUILD_TOOLS_VERSION = "23.0.3"
+        COMPILE_SDK_VERSION = 25
+        BUILD_TOOLS_VERSION = "24.0.0"
         MIN_SDK_VERSION = 14
-        TARGET_SDK_VERSION = 23
+        TARGET_SDK_VERSION = 25
 
         libSupportAppcompat_v7="com.android.support:appcompat-v7:${supportVersion}"
         libSupportAppcompat_v4="com.android.support:support-v4:${supportVersion}"

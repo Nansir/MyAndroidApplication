@@ -8,7 +8,6 @@ import android.os.Bundle;
 import android.provider.MediaStore.Images.ImageColumns;
 import android.util.DisplayMetrics;
 
-import com.sir.app.base.common.BaseApplication;
 import com.sir.app.base.config.SysEnv;
 import com.sir.app.base.data.DTO;
 
@@ -16,6 +15,8 @@ import java.io.Serializable;
 
 /**
  * 基本的操作共通抽取
+ * Created by zhuyinan on 2016/4/25.
+ * Contact by 445181052@qq.com
  */
 public class Operation {
 

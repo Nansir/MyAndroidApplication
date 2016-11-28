@@ -7,7 +7,7 @@
     android:background="@drawable/base_sweet_dialog_background"
     android:gravity="center"
     android:orientation="vertical"
-    android:padding="10dp" >
+    android:padding="10dp">
 
     <ImageView
         android:id="@+id/custom_image"
@@ -23,7 +23,7 @@
         android:layout_width="53dp"
         android:layout_height="53dp"
         android:layout_marginTop="5dp"
-        android:visibility="gone" >
+        android:visibility="gone">
 
         <View
             android:layout_width="match_parent"
@@ -44,7 +44,7 @@
         android:layout_width="53dp"
         android:layout_height="53dp"
         android:layout_marginTop="5dp"
-        android:visibility="gone" >
+        android:visibility="gone">
 
         <View
             android:layout_width="match_parent"
@@ -83,7 +83,7 @@
         android:layout_width="53dp"
         android:layout_height="53dp"
         android:layout_marginTop="5dp"
-        android:visibility="gone" >
+        android:visibility="gone">
 
         <View
             android:layout_width="match_parent"
@@ -121,7 +121,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginTop="10dp"
-        android:gravity="center" >
+        android:gravity="center">
 
         <Button
             android:id="@+id/cancel_button"

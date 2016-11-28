@@ -19,7 +19,7 @@ import android.util.DisplayMetrics;
 import android.util.Log;
 import android.view.WindowManager;
 
-import com.sir.app.base.common.BaseApplication;
+import com.sir.app.base.BaseApplication;
 
 /**
  * 运行环境信息

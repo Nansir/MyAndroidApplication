@@ -6,12 +6,15 @@ import android.support.annotation.Nullable;
 import android.support.v4.app.FragmentActivity;
 import android.view.MenuItem;
 
-import com.sir.app.base.common.BaseApplication;
-
 import java.lang.ref.WeakReference;
 
 import butterknife.ButterKnife;
 
+/**
+ * FragmentActivity(V4包)
+ * Created by zhuyinan on 2016/4/25.
+ * Contact by 445181052@qq.com
+ */
 public abstract class BaseFragmentActivityV4 extends FragmentActivity implements
         IBaseActivity {
 
@@ -37,10 +40,7 @@ public abstract class BaseFragmentActivityV4 extends FragmentActivity implements
         super.onCreate(savedInstanceState);
 
         // 设置渲染视图View
-        // mContextView = LayoutInflater.from(this).inflate(bindLayout(), null);
         setContentView(bindLayout());
-
-        // mContextView = getWindow().getDecorView();
 
         //初始化
         ButterKnife.bind(this);
@@ -65,14 +65,12 @@ public abstract class BaseFragmentActivityV4 extends FragmentActivity implements
     @Override
     protected void onDestroy() {
         super.onDestroy();
-        destroy();
         mApplication.removeTask(context);
     }
 
     @Override
     protected void onResume() {
         super.onResume();
-        resume();
     }
 
     /**
@@ -103,17 +101,10 @@ public abstract class BaseFragmentActivityV4 extends FragmentActivity implements
         switch (item.getItemId()) {
             case android.R.id.home:
                 finish();
-                //关闭窗体动画显示
-                overridePendingTransition(0, R.anim.base_slide_right_out);
                 break;
         }
         return super.onOptionsItemSelected(item);
     }
 
-    @Override
-    public void onBackPressed() {
-        super.onBackPressed();
-        //关闭窗体动画显示
-        overridePendingTransition(0, R.anim.base_slide_right_out);
-    }
+
 }

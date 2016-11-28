@@ -106,13 +106,4 @@ public class RecyclerViewActivity extends BaseActivity {
         }
     }
 
-    @Override
-    public void resume() {
-
-    }
-
-    @Override
-    public void destroy() {
-
-    }
 }

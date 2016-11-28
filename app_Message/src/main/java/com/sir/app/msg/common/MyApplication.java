@@ -1,6 +1,6 @@
 package com.sir.app.msg.common;
 
-import com.sir.app.base.common.BaseApplication;
+import com.sir.app.base.BaseApplication;
 
 /**
  * Created by zhuyinan on 2016/3/26.

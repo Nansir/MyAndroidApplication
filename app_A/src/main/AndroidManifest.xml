@@ -3,16 +3,17 @@
     package="com.sir.app">
 
     <application
-        android:name=".base.common.BaseApplication"
+        android:name=".base.BaseApplication"
         android:allowBackup="true"
-        android:icon="@mipmap/ic_launcher"
         android:label="@string/app_name"
-        android:supportsRtl="true"
+        android:icon="@mipmap/ic_launcher"
         android:theme="@style/AppTheme">
         <activity
             android:name=".a.MainActivity"
             android:label="@string/app_versions"
             android:theme="@style/AppTheme.NoActionBar">
+
+
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 

@@ -58,14 +58,4 @@ public class DetailsActivity extends BaseActivity {
         return super.onOptionsItemSelected(item);
     }
 
-
-    @Override
-    public void resume() {
-
-    }
-
-    @Override
-    public void destroy() {
-
-    }
 }

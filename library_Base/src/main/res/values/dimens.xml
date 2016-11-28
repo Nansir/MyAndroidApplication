@@ -1,6 +1,10 @@
 <resources>
-
     <!-- Default screen margins, per the Android Design guidelines. -->
+    <dimen name="actionbar_size">45dp</dimen>
+    <dimen name="actionbar_text_size">18sp</dimen>
+    <dimen name="actionbar_left">18sp</dimen>
+
+
     <dimen name="activity_horizontal_margin">16dp</dimen>
     <dimen name="activity_vertical_margin">16dp</dimen>
     <dimen name="actionbar_vertical_margin">48dp</dimen>
@@ -9,4 +13,5 @@
     <dimen name="spot_title_margin">10dp</dimen>
     <dimen name="spot_progress_margin">24dp</dimen>
     <dimen name="spot_progress_width">250dp</dimen>
+
 </resources>

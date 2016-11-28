@@ -9,7 +9,7 @@
     android:paddingRight="@dimen/activity_horizontal_margin"
     android:paddingTop="@dimen/activity_vertical_margin"
     app:layout_behavior="@string/appbar_scrolling_view_behavior"
-    tools:context="com.sir.app.myapplication.MainActivity"
+    tools:context="a.MainActivity"
     tools:showIn="@layout/app_bar_main">
 
 
@@ -97,6 +97,13 @@
             android:layout_height="wrap_content"
             android:layout_marginTop="5dp"
             android:text="RecyclerView" />
+
+        <Button
+            android:id="@+id/btn_Bao"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="5dp"
+            android:text="启动另一个程序" />
 
     </LinearLayout>
 </RelativeLayout>

@@ -58,13 +58,4 @@ public class Launcher extends BaseActivity {
 		
 	}
 
-	@Override
-	public void resume() {
-		
-	}
-
-	@Override
-	public void destroy() {
-		
-	}
 }

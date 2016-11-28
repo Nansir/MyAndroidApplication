@@ -10,6 +10,8 @@ import butterknife.ButterKnife;
 
 /**
  * Fragment基类(V4包)
+ *  Created by zhuyinan on 2016/4/25.
+ * Contact by 445181052@qq.com
  */
 public abstract class BaseFragmentV4 extends Fragment implements IBaseFragment {
 

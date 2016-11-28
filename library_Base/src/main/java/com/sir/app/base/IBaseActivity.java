@@ -5,6 +5,8 @@ import android.view.View;
 
 /**
  * Activity接口
+ * Created by zhuyinan on 2016/4/25.
+ * Contact by 445181052@qq.com
  */
 public interface IBaseActivity {
 

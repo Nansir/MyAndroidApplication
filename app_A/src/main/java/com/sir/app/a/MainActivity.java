@@ -1,6 +1,8 @@
 package com.sir.app.a;
 
+import android.content.ComponentName;
 import android.content.Context;
+import android.content.Intent;
 import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.NavigationView;
 import android.support.design.widget.Snackbar;
@@ -14,7 +16,9 @@ import android.view.View;
 
 import com.sir.app.R;
 import com.sir.app.base.BaseActivity;
+import com.sir.app.base.tools.ToolAlert;
 
+import butterknife.Bind;
 import butterknife.OnClick;
 
 public class MainActivity extends BaseActivity
@@ -131,13 +135,17 @@ public class MainActivity extends BaseActivity
         getOperation().forward(RecyclerViewActivity.class);
     }
 
-    @Override
-    public void resume() {
+    @OnClick(R.id.btn_Bao)
+    public void btnBao() {
 
+        ToolAlert.showShort("启动");
+        Intent mIntent = new Intent( );
+
+        mIntent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+        ComponentName comp = new ComponentName("com.bdk.blesample", "com.clj.blesample.MainActivity");
+        mIntent.setComponent(comp);
+        mIntent.setAction("android.intent.action.VIEW");
+        startActivity(mIntent);
     }
 
-    @Override
-    public void destroy() {
-
-    }
 }

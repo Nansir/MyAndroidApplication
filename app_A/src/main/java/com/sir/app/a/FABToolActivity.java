@@ -107,15 +107,7 @@ public class FABToolActivity extends BaseActivity implements View.OnClickListene
 
     }
 
-    @Override
-    public void resume() {
 
-    }
-
-    @Override
-    public void destroy() {
-
-    }
 
     @Override
     public void onBackPressed() {

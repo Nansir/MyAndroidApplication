@@ -4,6 +4,8 @@ import java.io.Serializable;
 
 /**
  * 实体基类
+ * Created by zhuyinan on 2016/4/25.
+ * Contact by 445181052@qq.com
  */
 public abstract class BaseEntity implements Serializable {
 

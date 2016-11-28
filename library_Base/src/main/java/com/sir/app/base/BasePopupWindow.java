@@ -7,12 +7,11 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.PopupWindow;
 
-import com.sir.app.base.common.BaseApplication;
-
 
 /**
- *
- * Created by zhuyinan on 2016/6/6.
+ * PopupWindow 基类
+ * Created by zhuyinan on 2016/4/25.
+ * Contact by 445181052@qq.com
  */
 public abstract class BasePopupWindow {
 
@@ -56,7 +55,7 @@ public abstract class BasePopupWindow {
     }
 
     public int getPopupHeiget() {
-        return popupHeiget == 0 ?ViewGroup.LayoutParams.WRAP_CONTENT : popupHeiget;
+        return popupHeiget == 0 ? ViewGroup.LayoutParams.WRAP_CONTENT : popupHeiget;
     }
 
     public void setPopupHeiget(int popupHeiget) {

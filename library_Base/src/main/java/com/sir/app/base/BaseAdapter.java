@@ -6,8 +6,12 @@ import java.util.List;
 
 import android.app.Activity;
 
+import com.nostra13.universalimageloader.core.DisplayImageOptions;
+
 /**
  * Adapter基类
+ * Created by zhuyinan on 2016/4/25.
+ * Contact by 445181052@qq.com
  */
 public abstract class BaseAdapter extends android.widget.BaseAdapter {
 
@@ -25,7 +29,7 @@ public abstract class BaseAdapter extends android.widget.BaseAdapter {
     private int mPerPageSize = 10;
 
     public BaseAdapter() {
-        this(null);
+        throw new UnsupportedOperationException("Adapter context is null");
     }
 
     public BaseAdapter(Activity mContext) {
@@ -149,4 +153,17 @@ public abstract class BaseAdapter extends android.widget.BaseAdapter {
         }
         return null;
     }
+    private DisplayImageOptions mOption;
+
+    public DisplayImageOptions getImageOptionsn() {
+        return getImageOptionsn(R.mipmap.ic_launcher, R.mipmap.ic_launcher, R.mipmap.ic_launcher);
+    }
+
+    public DisplayImageOptions getImageOptionsn(int onLoading, int onFail, int emptyUri) {
+        if (mOption == null) {
+            mOption = ((BaseApplication) BaseApplication.getContext()).getImageOptions(onLoading, onFail, emptyUri);
+        }
+        return mOption;
+    }
+
 }

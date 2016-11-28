@@ -26,8 +26,6 @@ public class HideBarActivity extends BaseActivity {
         setSupportActionBar(toolbar);
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 
-
-
     }
 
     @Override
@@ -35,13 +33,4 @@ public class HideBarActivity extends BaseActivity {
 
     }
 
-    @Override
-    public void resume() {
-
-    }
-
-    @Override
-    public void destroy() {
-
-    }
 }

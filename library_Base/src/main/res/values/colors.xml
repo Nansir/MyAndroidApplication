@@ -1,5 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
+    <color name="colorPrimary">#4F94CD</color>
+    <color name="colorPrimaryDark">#4682B4</color>
+    <color name="colorAccent">#48D1CC</color>
+
+
     <!-- sweet_alert -->
     <color name="float_transparent">#66000000</color>
     <color name="sweet_dialog_bg_color">#FFFFFF</color>

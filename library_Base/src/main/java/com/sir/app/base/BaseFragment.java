@@ -9,6 +9,8 @@ import android.view.ViewGroup;
 
 /**
  * Fragment基类
+ * Created by zhuyinan on 2016/4/25.
+ * Contact by 445181052@qq.com
  */
 @SuppressLint("NewApi")
 public abstract class BaseFragment extends Fragment implements IBaseFragment {

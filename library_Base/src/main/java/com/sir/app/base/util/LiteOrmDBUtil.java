@@ -11,7 +11,8 @@ import java.util.List;
 /**
  * 数据库
  * @author zhuyinan
- *
+ *Created by zhuyinan on 2016/4/25.
+ * Contact by 445181052@qq.com
  */
 public class LiteOrmDBUtil {
 	public static String DB_NAME;
