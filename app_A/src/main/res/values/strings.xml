@@ -6,6 +6,8 @@
     <string name="character_3">3.浮动操作按钮与Snackbar</string>
     <string name="character_4">4.制造折叠效果</string>
     <string name="character_5">5.体验艺术般的控件RecyclerView</string>
+    <string name="character_6">6.开关重力感应</string>
+    <string name="character_7">7.启动另一程序</string>
 
     <string name="navigation_drawer_open">Open navigation drawer</string>
     <string name="navigation_drawer_close">Close navigation drawer</string>

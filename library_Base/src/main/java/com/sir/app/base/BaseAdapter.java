@@ -28,7 +28,7 @@ public abstract class BaseAdapter extends android.widget.BaseAdapter {
      **/
     private int mPerPageSize = 10;
 
-    public BaseAdapter() {
+    private BaseAdapter() {
         throw new UnsupportedOperationException("Adapter context is null");
     }
 

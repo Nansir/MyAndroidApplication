@@ -1,5 +1,6 @@
 package com.sir.app.a;
 
+import android.app.Activity;
 import android.content.Context;
 import android.os.Handler;
 import android.os.Message;
@@ -73,7 +74,7 @@ public class FABToolActivity extends BaseActivity implements View.OnClickListene
         three.setOnClickListener(this);
         four.setOnClickListener(this);
 
-        MyAdapter myAdapter = new MyAdapter();
+        MyAdapter myAdapter = new MyAdapter(this);
         myAdapter.addItem("动感ListView");
         for (int i = 1; i < 30; i++) {
             myAdapter.addItem("Test" + i);
@@ -135,6 +136,11 @@ public class FABToolActivity extends BaseActivity implements View.OnClickListene
 
 
     class MyAdapter extends BaseAdapter {
+
+        public MyAdapter(Activity mContext) {
+            super(mContext);
+        }
+
         @Override
         public View getView(int position, View convertView, ViewGroup parent) {
             convertView = LayoutInflater.from(getContext()).inflate(R.layout.dummy_fragment, null);
