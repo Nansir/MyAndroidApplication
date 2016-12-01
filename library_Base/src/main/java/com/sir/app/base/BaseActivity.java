@@ -6,21 +6,19 @@ import android.content.res.Resources;
 import android.graphics.Color;
 import android.os.Build;
 import android.os.Bundle;
+import android.support.v4.app.Fragment;
+import android.support.v4.app.FragmentTransaction;
 import android.support.v7.app.AppCompatActivity;
-import android.view.Gravity;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.Window;
 import android.view.WindowManager;
-import android.widget.LinearLayout;
-import android.widget.TextView;
 
 import java.lang.ref.WeakReference;
+import java.util.List;
 import java.util.Locale;
 
 import butterknife.ButterKnife;
-
-import static android.R.attr.button;
 
 /**
  * android 系统中的四大组件之一Activity基类
@@ -32,17 +30,22 @@ public abstract class BaseActivity extends AppCompatActivity implements IBaseAct
     /***
      * 整个应用Applicaiton
      **/
-    private BaseApplication mApplication = null;
+    private BaseApplication mApplication;
     /**
      * 当前Activity的弱引用，防止内存泄露
      **/
-    private WeakReference<Activity> context = null;
+    private WeakReference<Activity> context;
 
     /**
      * 共通操作
      **/
-    private Operation mBaseOperation = null;
+    private Operation mBaseOperation;
 
+    /**
+     * 碎片集
+     */
+    private List<Fragment> mFragments;
+    private int upPosition = 0;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -53,6 +56,12 @@ public abstract class BaseActivity extends AppCompatActivity implements IBaseAct
 
         //初始化ButterKnife控件
         ButterKnife.bind(this);
+
+        //内存重启时调用
+        if (savedInstanceState != null) {
+            mFragments = getSupportFragmentManager().getFragments();
+            upPosition = savedInstanceState.getInt("Fragment");
+        }
 
         //获取应用Application
         mApplication = (BaseApplication) getApplicationContext();
@@ -69,9 +78,37 @@ public abstract class BaseActivity extends AppCompatActivity implements IBaseAct
 
         //业务操作
         doBusiness(this);
-
     }
 
+
+    /**
+     * 显示Fragment
+     *
+     * @param layoutID
+     * @param position
+     */
+    protected void setShowFragment(int layoutID, int position) {
+        FragmentTransaction transaction = getSupportFragmentManager().beginTransaction();
+        if (!mFragments.get(position).isAdded()) {
+            transaction.add(layoutID, mFragments.get(position));
+            transaction.show(mFragments.get(position));
+        } else {
+            transaction.show(mFragments.get(position));
+        }
+        if (upPosition != position) {
+            transaction.hide(mFragments.get(upPosition));
+        }
+        transaction.commit();
+        upPosition = position;
+    }
+
+
+    //被系统杀死时候调用保存状态
+    @Override
+    protected void onSaveInstanceState(Bundle outState) {
+        super.onSaveInstanceState(outState);
+        outState.putInt("Fragment", upPosition);
+    }
 
     @Override
     protected void onDestroy() {
@@ -95,6 +132,7 @@ public abstract class BaseActivity extends AppCompatActivity implements IBaseAct
 
     /**
      * 设置透明主题
+     * bindLayout里面调用
      */
     protected void setTranslucentTheme() {
         getWindow().requestFeature(Window.FEATURE_NO_TITLE);
@@ -114,7 +152,7 @@ public abstract class BaseActivity extends AppCompatActivity implements IBaseAct
     /**
      * 设置语言
      */
-    private void setLanguage() {
+    protected void setLanguage() {
         Resources resources = getResources();
         Configuration config = resources.getConfiguration();
         Locale locale = Locale.getDefault();
@@ -155,4 +193,5 @@ public abstract class BaseActivity extends AppCompatActivity implements IBaseAct
         }
         return super.onOptionsItemSelected(item);
     }
+
 }

@@ -5,6 +5,9 @@ import java.util.Collection;
 import java.util.List;
 
 import android.app.Activity;
+import android.util.SparseArray;
+import android.view.View;
+import android.widget.ListView;
 
 import com.nostra13.universalimageloader.core.DisplayImageOptions;
 
@@ -14,11 +17,10 @@ import com.nostra13.universalimageloader.core.DisplayImageOptions;
  * Contact by 445181052@qq.com
  */
 public abstract class BaseAdapter extends android.widget.BaseAdapter {
-
     /**
      * 数据存储集合
      **/
-    private List<Object> mDataList = new ArrayList<Object>();
+    private List<Object> mDataList;
     /**
      * Context上下文
      **/
@@ -39,6 +41,7 @@ public abstract class BaseAdapter extends android.widget.BaseAdapter {
     public BaseAdapter(Activity mContext, int mPerPageSize) {
         this.mContext = mContext;
         this.mPerPageSize = mPerPageSize;
+        this.mDataList = new ArrayList<>();
     }
 
     @Override
@@ -153,6 +156,7 @@ public abstract class BaseAdapter extends android.widget.BaseAdapter {
         }
         return null;
     }
+
     private DisplayImageOptions mOption;
 
     public DisplayImageOptions getImageOptionsn() {
@@ -164,6 +168,48 @@ public abstract class BaseAdapter extends android.widget.BaseAdapter {
             mOption = ((BaseApplication) BaseApplication.getContext()).getImageOptions(onLoading, onFail, emptyUri);
         }
         return mOption;
+    }
+
+    /**
+     * ViewHolder的内存优化方案
+     *
+     * @param view
+     * @param id
+     * @param <T>
+     * @return
+     */
+    public <T extends View> T getViewHolder(View view, int id) {
+        SparseArray<View> viewHolder = (SparseArray<View>) view.getTag();
+        if (viewHolder == null) {
+            viewHolder = new SparseArray<>();
+            view.setTag(viewHolder);
+        }
+        View childView = viewHolder.get(id);
+        if (childView == null) {
+            childView = view.findViewById(id);
+            viewHolder.put(id, childView);
+        }
+        return (T) childView;
+    }
+
+    /**
+     * 更新Item视图，减少不必要的重绘
+     * @param listView
+     * @param position
+     */
+    public void updateItemView(ListView listView, int position) {
+//        //换算成 Item View 在 ViewGroup 中的 index
+//        int index = position - listView.getFirstVisiblePosition();
+//        if (index >= 0 && index < listView.getChildCount()) {
+//            //更新数据
+//            AuthorInfo authorInfo = mAuthorInfoList.get(position);
+//            authorInfo.setNickName("Google Android");
+//            authorInfo.setMotto("My name is Android .");
+//            authorInfo.setPortrait(R.mipmap.ic_launcher);
+//            //更新单个Item
+//            View itemView = listView.getChildAt(index);
+//            getView(position, itemView, listView);
+//        }
     }
 
 }
