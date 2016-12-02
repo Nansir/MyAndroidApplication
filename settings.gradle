@@ -1,12 +1,13 @@
-include ':app_ZXing', ':app_ASeven'
+include ':app_ZXing'
+include ':app_ASeven'
+include ':app_SystemUi'
 include ':app_MD360'
 include ':app_Base'
 include ':app_A'
 include ':app_AA'
 include ':app_Web'//Android服务器
-include ':app_Widget'
+
 include ':app_Message'
-include ':app_Face'
 include ':app_DynamicGrid'
 include ':app_DynamicLabel'
 include ':app_TabLyoutDemo'

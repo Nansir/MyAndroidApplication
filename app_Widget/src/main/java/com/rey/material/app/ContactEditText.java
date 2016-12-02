@@ -7,7 +7,6 @@ import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.graphics.Canvas;
 import android.graphics.Paint;
-import android.graphics.Rect;
 import android.graphics.Typeface;
 import android.graphics.drawable.BitmapDrawable;
 import android.graphics.drawable.Drawable;
@@ -28,12 +27,10 @@ import android.view.LayoutInflater;
 import android.view.MotionEvent;
 import android.view.View;
 import android.view.ViewGroup;
-import android.view.ViewTreeObserver;
 import android.widget.BaseAdapter;
 import android.widget.Filter;
 import android.widget.Filterable;
 import android.widget.MultiAutoCompleteTextView;
-import android.widget.PopupWindow;
 import android.widget.TextView;
 
 import com.rey.material.demo.R;
@@ -41,8 +38,6 @@ import com.sir.app.material.text.style.ContactChipSpan;
 import com.sir.app.material.util.ThemeUtil;
 import com.sir.app.material.util.TypefaceUtil;
 import com.sir.app.material.widget.EditText;
-import com.sir.app.material.widget.ListPopupWindow;
-import com.sir.app.material.widget.ListView;
 import com.squareup.picasso.Picasso;
 import com.squareup.picasso.Target;
 
@@ -71,7 +66,7 @@ public class ContactEditText extends EditText{
 
     private ContactSuggestionAdapter mSuggestionAdapter;
     private ContactReplaceAdapter mReplacementAdapter;
-    private ListPopupWindow mReplacementPopup;
+   // private ListPopupWindow mReplacementPopup;
     private RecipientSpan mSelectedSpan;
 
     private RecipientSpan mTouchedSpan;
@@ -228,7 +223,7 @@ public class ContactEditText extends EditText{
                 break;
             case MotionEvent.ACTION_UP:
                 if (mTouchedSpan != null) {
-                    onSpanClick(mTouchedSpan);
+                  //  onSpanClick(mTouchedSpan);
                     mTouchedSpan = null;
                     return true;
                 }
@@ -277,70 +272,70 @@ public class ContactEditText extends EditText{
         getText().setSpan(new RecipientSpan(recipient), start, end, Spanned.SPAN_EXCLUSIVE_EXCLUSIVE);
     }
 
-    private void onSpanClick(RecipientSpan span){
-        if(span != mSelectedSpan) {
-            dismissReplacementPopup();
-            mSelectedSpan = span;
-            if(mReplacementAdapter == null)
-                mReplacementAdapter = new ContactReplaceAdapter(mSelectedSpan.getRecipient());
-            else
-                mReplacementAdapter.setRecipient(mSelectedSpan.getRecipient());
-
-            mReplacementPopup = new ListPopupWindow(getContext());
-            mReplacementPopup.setOnDismissListener(new PopupWindow.OnDismissListener() {
-                @Override
-                public void onDismiss() {
-                    mReplacementPopup = null;
-                    mSelectedSpan = null;
-                }
-            });
-
-            mReplacementPopup.setAnchorView(this);
-            mReplacementPopup.setModal(true);
-            mReplacementPopup.setAdapter(mReplacementAdapter);
-            mReplacementPopup.show();
-
-            mReplacementPopup.getListView().getViewTreeObserver().addOnGlobalLayoutListener(new ViewTreeObserver.OnGlobalLayoutListener() {
-                @Override
-                public void onGlobalLayout() {
-                    ListView lv = mReplacementPopup.getListView();
-                    ViewTreeObserver observer = lv.getViewTreeObserver();
-                    if(Build.VERSION.SDK_INT >= Build.VERSION_CODES.JELLY_BEAN)
-                        observer.removeOnGlobalLayoutListener(this);
-                    else
-                        observer.removeGlobalOnLayoutListener(this);
-
-                    View v = lv.getChildAt(0);
-                    v.measure(MeasureSpec.makeMeasureSpec(0, MeasureSpec.UNSPECIFIED), MeasureSpec.makeMeasureSpec(0, MeasureSpec.UNSPECIFIED));
-                    mReplacementPopup.setContentWidth(v.getMeasuredWidth());
-
-
-                    int[] popupLocation = new int[2];
-                    lv.getLocationOnScreen(popupLocation);
-
-                    int[] inputLocation = new int[2];
-                    mInputView.getLocationOnScreen(inputLocation);
-
-                    Drawable background = mReplacementPopup.getPopup().getBackground();
-                    Rect backgroundPadding = new Rect();
-                    int verticalOffset;
-                    int horizontalOffset = inputLocation[0] + (int)mSelectedSpan.mX - (popupLocation[0] + backgroundPadding.left);
-
-                    if(background != null)
-                        background.getPadding(backgroundPadding);
-
-                    if(inputLocation[1] < popupLocation[1]) //popup show at bottom
-                        verticalOffset = inputLocation[1] + mSelectedSpan.mY - (popupLocation[1] + backgroundPadding.top);
-                    else
-                        verticalOffset = inputLocation[1] + mSelectedSpan.mY + mSpanHeight - (popupLocation[1] + lv.getHeight() - backgroundPadding.bottom);
-
-                    mReplacementPopup.setVerticalOffset(verticalOffset);
-                    mReplacementPopup.setHorizontalOffset(horizontalOffset);
-                    mReplacementPopup.show();
-                }
-            });
-        }
-    }
+//    private void onSpanClick(RecipientSpan span){
+//        if(span != mSelectedSpan) {
+//            dismissReplacementPopup();
+//            mSelectedSpan = span;
+//            if(mReplacementAdapter == null)
+//                mReplacementAdapter = new ContactReplaceAdapter(mSelectedSpan.getRecipient());
+//            else
+//                mReplacementAdapter.setRecipient(mSelectedSpan.getRecipient());
+//
+//            mReplacementPopup = new ListPopupWindow(getContext());
+//            mReplacementPopup.setOnDismissListener(new PopupWindow.OnDismissListener() {
+//                @Override
+//                public void onDismiss() {
+//                    mReplacementPopup = null;
+//                    mSelectedSpan = null;
+//                }
+//            });
+//
+//            mReplacementPopup.setAnchorView(this);
+//            mReplacementPopup.setModal(true);
+//            mReplacementPopup.setAdapter(mReplacementAdapter);
+//            mReplacementPopup.show();
+//
+//            mReplacementPopup.getListView().getViewTreeObserver().addOnGlobalLayoutListener(new ViewTreeObserver.OnGlobalLayoutListener() {
+//                @Override
+//                public void onGlobalLayout() {
+//                    ListView lv = mReplacementPopup.getListView();
+//                    ViewTreeObserver observer = lv.getViewTreeObserver();
+//                    if(Build.VERSION.SDK_INT >= Build.VERSION_CODES.JELLY_BEAN)
+//                        observer.removeOnGlobalLayoutListener(this);
+//                    else
+//                        observer.removeGlobalOnLayoutListener(this);
+//
+//                    View v = lv.getChildAt(0);
+//                    v.measure(MeasureSpec.makeMeasureSpec(0, MeasureSpec.UNSPECIFIED), MeasureSpec.makeMeasureSpec(0, MeasureSpec.UNSPECIFIED));
+//                    mReplacementPopup.setContentWidth(v.getMeasuredWidth());
+//
+//
+//                    int[] popupLocation = new int[2];
+//                    lv.getLocationOnScreen(popupLocation);
+//
+//                    int[] inputLocation = new int[2];
+//                    mInputView.getLocationOnScreen(inputLocation);
+//
+//                    Drawable background = mReplacementPopup.getPopup().getBackground();
+//                    Rect backgroundPadding = new Rect();
+//                    int verticalOffset;
+//                    int horizontalOffset = inputLocation[0] + (int)mSelectedSpan.mX - (popupLocation[0] + backgroundPadding.left);
+//
+//                    if(background != null)
+//                        background.getPadding(backgroundPadding);
+//
+//                    if(inputLocation[1] < popupLocation[1]) //popup show at bottom
+//                        verticalOffset = inputLocation[1] + mSelectedSpan.mY - (popupLocation[1] + backgroundPadding.top);
+//                    else
+//                        verticalOffset = inputLocation[1] + mSelectedSpan.mY + mSpanHeight - (popupLocation[1] + lv.getHeight() - backgroundPadding.bottom);
+//
+//                    mReplacementPopup.setVerticalOffset(verticalOffset);
+//                    mReplacementPopup.setHorizontalOffset(horizontalOffset);
+//                    mReplacementPopup.show();
+//                }
+//            });
+//        }
+//    }
 
     private void updateSpanStyle(){
         Recipient[] recipients = getRecipients();
@@ -368,12 +363,12 @@ public class ContactEditText extends EditText{
         text.setSpan(span, start, start + replace.length() + 2, Spanned.SPAN_EXCLUSIVE_EXCLUSIVE);
     }
 
-    private void dismissReplacementPopup(){
-        if(mReplacementPopup != null && mReplacementPopup.isShowing()){
-            mReplacementPopup.dismiss();
-            mReplacementPopup = null;
-        }
-    }
+//    private void dismissReplacementPopup(){
+//        if(mReplacementPopup != null && mReplacementPopup.isShowing()){
+//            mReplacementPopup.dismiss();
+//            mReplacementPopup = null;
+//        }
+//    }
 
     @Override
     protected Parcelable onSaveInstanceState() {
@@ -602,7 +597,7 @@ public class ContactEditText extends EditText{
 
             Selection.setSelection(getText(), getText().length());
 
-            dismissReplacementPopup();
+            //dismissReplacementPopup();
         }
 
         @Override
@@ -748,7 +743,8 @@ public class ContactEditText extends EditText{
 
         @Override
         public void afterTextChanged(Editable s) {
-            dismissReplacementPopup();
+
+            //dismissReplacementPopup();
         }
 
     }
