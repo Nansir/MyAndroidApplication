@@ -5,7 +5,7 @@ android {
     buildToolsVersion "24.0.0"
 
     defaultConfig {
-        applicationId "com.space.app.robot.aseven"
+        applicationId "com.sir.app.robot.aseven"
         minSdkVersion 15
         targetSdkVersion 25
         versionCode 1
@@ -20,11 +20,12 @@ android {
 }
 
 dependencies {
-    compile fileTree(dir: 'libs', include: ['*.jar'])
-
+    compile fileTree(include: ['*.jar'], dir: 'libs')
     compile 'com.android.support:appcompat-v7:25.0.1'
     compile 'com.android.support:design:25.0.1'
     testCompile 'junit:junit:4.12'
-    compile 'org.greenrobot:eventbus:3.0.0' //组件间通信
+    compile 'org.greenrobot:eventbus:3.0.0'
+    //组件间通信
     compile project(':library_Base')
+
 }

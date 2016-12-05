@@ -2,10 +2,10 @@ include ':app_ZXing'
 include ':app_ASeven'
 include ':app_SystemUi'
 include ':app_MD360'
-include ':app_Base'
+
 include ':app_A'
 include ':app_AA'
-include ':app_Web'//Android服务器
+include ':app_Web'
 
 include ':app_Message'
 include ':app_DynamicGrid'
@@ -15,7 +15,7 @@ include ':app_TabLyoutDemo'
 include ':library_AutoLayout'
 include ':library_Base'
 include ':library_Widget'
-
+include ':library_Update'
 include ':library_Common'
 include ':library_OkHttp'
 include ':library_PhotoPicker'
