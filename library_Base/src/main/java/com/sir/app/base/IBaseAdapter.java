@@ -1,18 +1,25 @@
 package com.sir.app.base;
 
+import java.util.Collection;
+
 /**
- * Adapter 接口
- * Created by zhuyinan on 2016/12/1.
+ * Created by zhuyinan on 2016/12/6.
  * Contact by 445181052@qq.com
  */
 
-public interface IBaseAdapter {
-    /**
-     * 绑定渲染视图的布局文件
-     * @return 布局文件资源id
-     */
-    public int bindLayout();
+public interface IBaseAdapter<T> {
 
-    public void onBindHolder(ViewHolder holder, int position);
+    public T getItem(T data);
+
+    public void addItem(T data);
+
+    public void removeItem(int position);
+
+    public void updateItem(int position, T data);
+
+    public void shift(int fromPosition, int toPosition);
+
+    public void addItem(Collection<? extends T> list);
+
 
 }

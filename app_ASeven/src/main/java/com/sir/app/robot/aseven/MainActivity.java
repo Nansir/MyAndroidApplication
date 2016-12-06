@@ -6,25 +6,19 @@ import android.support.design.widget.NavigationView;
 import android.support.v4.view.GravityCompat;
 import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.ActionBarDrawerToggle;
-import android.support.v7.widget.LinearLayoutManager;
-import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 
 import com.sir.app.base.BaseActivity;
+import com.sir.app.base.tools.ToolAlert;
 import com.sir.app.base.tools.ToolSnackbar;
 
-import butterknife.Bind;
+import butterknife.OnClick;
 
 public class MainActivity extends BaseActivity implements NavigationView.OnNavigationItemSelectedListener {
 
-
-    @Bind(R.id.recyclerView)
-    RecyclerView recyclerView;
-
-    RecyclerAdapter recyclerAdapter;
 
     @Override
     public int bindLayout() {
@@ -49,8 +43,7 @@ public class MainActivity extends BaseActivity implements NavigationView.OnNavig
                 ToolSnackbar.showLong(view, "Snackbar", "btn", new View.OnClickListener() {
                     @Override
                     public void onClick(View view) {
-                        recyclerAdapter.addItem("123");
-                        //getOperation().forward(ContentActivity.class);
+                        ToolAlert.showShort("Snackbar");
                     }
                 });
             }
@@ -65,15 +58,6 @@ public class MainActivity extends BaseActivity implements NavigationView.OnNavig
         NavigationView navigationView = (NavigationView) findViewById(R.id.nav_view);
         navigationView.setNavigationItemSelectedListener(this);
 
-        recyclerAdapter = new RecyclerAdapter(this);
-        recyclerAdapter.addItem("asfasfa");
-        recyclerAdapter.addItem("asfasf");
-        recyclerAdapter.addItem("asfasgasdfasfa");
-        recyclerAdapter.addItem("asfsdfasdfasfa");
-        recyclerAdapter.addItem("asfasfasfdasfa");
-        recyclerView.setLayoutManager(new LinearLayoutManager(this));
-
-        recyclerView.setAdapter(recyclerAdapter);
 
     }
 
@@ -127,4 +111,15 @@ public class MainActivity extends BaseActivity implements NavigationView.OnNavig
     }
 
 
+    @OnClick({R.id.btn_ExpandableList, R.id.btn_RecyclerView})
+    public void onclick_btn(View view) {
+        switch (view.getId()) {
+            case R.id.btn_ExpandableList:
+                getOperation().forward(ExpandableActivity.class);
+                break;
+            case R.id.btn_RecyclerView:
+                getOperation().forward(RecyclerViewActivity.class);
+                break;
+        }
+    }
 }

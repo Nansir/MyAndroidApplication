@@ -27,11 +27,18 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+
+
         <activity
-            android:name="com.sir.app.robot.aseven.ContentActivity"
-            android:label="Content"
-            android:uiOptions="splitActionBarWhenNarrow"
-            android:theme="@style/AppTheme.NoActionBar" />
+            android:name=".ExpandableActivity"
+            android:label="Expandable">
+
+        </activity>
+        <activity
+            android:name=".RecyclerViewActivity"
+            android:label="RecyclerView">
+
+        </activity>
     </application>
 
 </manifest>

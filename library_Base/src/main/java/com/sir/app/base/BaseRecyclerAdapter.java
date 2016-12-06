@@ -10,6 +10,7 @@ import com.sir.app.base.listener.OnItemClickListener;
 
 import java.util.ArrayList;
 import java.util.Collection;
+import java.util.Collections;
 import java.util.List;
 
 /**
@@ -18,17 +19,16 @@ import java.util.List;
  * Contact by 445181052@qq.com
  */
 
-public abstract class BaseRecyclerAdapter extends RecyclerView.Adapter<ViewHolder> implements IBaseAdapter {
+public abstract class BaseRecyclerAdapter<T> extends RecyclerView.Adapter<ViewHolder> {
 
     protected Activity mContext;
-    protected List<Object> mDataList;
+    protected List<T> mDataList;
     protected SparseArrayCompat<View> mFootViews;
     protected SparseArrayCompat<View> mHeaderViews;
     protected OnItemClickListener<ViewHolder> listener;
 
     private final int BASE_ITEM_TYPE_HEADER = 100000;
     private final int BASE_ITEM_TYPE_FOOTER = 200000;
-
 
     private BaseRecyclerAdapter() {
 
@@ -104,12 +104,16 @@ public abstract class BaseRecyclerAdapter extends RecyclerView.Adapter<ViewHolde
         return mDataList == null ? 0 : mDataList.size();// + getItemCount() + getFootersCount();
     }
 
+    public abstract void onBindHolder(ViewHolder holder, int position);
+
+    public abstract int bindLayout();
+
     /**
      * 填充数据,此方法会清空以前的数据
      *
      * @param list 需要显示的数据
      */
-    public void addItem(Collection<? extends Object> list) {
+    public void addItem(Collection<? extends T> list) {
         mDataList.addAll(list);
     }
 
@@ -119,7 +123,7 @@ public abstract class BaseRecyclerAdapter extends RecyclerView.Adapter<ViewHolde
      * @param position item对应的小标
      * @param data     item的数据
      */
-    public void updateItem(int position, Object data) {
+    public void updateItem(int position, T data) {
         mDataList.set(position, data);
     }
 
@@ -129,7 +133,7 @@ public abstract class BaseRecyclerAdapter extends RecyclerView.Adapter<ViewHolde
      * @param holder item对应的holder
      * @param data   item的数据
      */
-    public void updateItem(ViewHolder holder, Object data) {
+    public void updateItem(ViewHolder holder, T data) {
         mDataList.set(holder.getLayoutPosition(), data);
     }
 
@@ -139,7 +143,7 @@ public abstract class BaseRecyclerAdapter extends RecyclerView.Adapter<ViewHolde
      * @param holder item对应的holder
      * @return 该item对应的数据
      */
-    public Object getItem(ViewHolder holder) {
+    public T getItem(ViewHolder holder) {
         return mDataList.get(holder.getLayoutPosition());
     }
 
@@ -149,7 +153,7 @@ public abstract class BaseRecyclerAdapter extends RecyclerView.Adapter<ViewHolde
      * @param position item的位置
      * @return item对应的数据
      */
-    public Object getItem(int position) {
+    public T getItem(int position) {
         return mDataList.get(position);
     }
 
@@ -158,8 +162,9 @@ public abstract class BaseRecyclerAdapter extends RecyclerView.Adapter<ViewHolde
      *
      * @param data 追加的数据
      */
-    public void addItem(Object data) {
+    public void addItem(T data) {
         mDataList.add(data);
+        notifyItemChanged(mDataList.size());
     }
 
     /**
@@ -167,18 +172,43 @@ public abstract class BaseRecyclerAdapter extends RecyclerView.Adapter<ViewHolde
      *
      * @param list 要追加的数据集合
      */
-    public void appendList(Collection<? extends Object> list) {
+    public void appendList(Collection<? extends T> list) {
         mDataList.addAll(list);
     }
 
+
+
     /**
-     * 在最顶部前置数据
+     * 删除数据Item
      *
-     * @param data 要前置的数据
+     * @param position
      */
-    public void preposeItem(Object data) {
-        mDataList.add(0, data);
+    public void removeItem(int position) {
+        mDataList.remove(position);
+        notifyItemRemoved(position);
     }
+
+
+    /**
+     * 移动Item
+     *
+     * @param fromPosition
+     * @param toPosition
+     */
+    public void moveItem(int fromPosition, int toPosition) {
+        //做数据的交换
+        if (fromPosition < toPosition) {
+            for (int index = fromPosition; index < toPosition; index++) {
+                Collections.swap(mDataList, index, index + 1);
+            }
+        } else {
+            for (int index = fromPosition; index > toPosition; index--) {
+                Collections.swap(mDataList, index, index - 1);
+            }
+        }
+        notifyItemMoved(fromPosition, toPosition);
+    }
+
 
     /**
      * 清空数据

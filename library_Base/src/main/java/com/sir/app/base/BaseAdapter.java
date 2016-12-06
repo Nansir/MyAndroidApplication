@@ -11,16 +11,18 @@ import android.widget.ListView;
 
 import com.nostra13.universalimageloader.core.DisplayImageOptions;
 
+import static android.R.attr.data;
+
 /**
  * Adapter基类
  * Created by zhuyinan on 2016/4/25.
  * Contact by 445181052@qq.com
  */
-public abstract class BaseAdapter extends android.widget.BaseAdapter {
+public abstract class BaseAdapter<T> extends android.widget.BaseAdapter {
     /**
      * 数据存储集合
      **/
-    private List<Object> mDataList;
+    private List<T> mDataList;
     /**
      * Context上下文
      **/
@@ -50,7 +52,7 @@ public abstract class BaseAdapter extends android.widget.BaseAdapter {
     }
 
     @Override
-    public Object getItem(int position) {
+    public T getItem(int position) {
         if (position < mDataList.size()) {
             return mDataList.get(position);
         } else {
@@ -75,18 +77,18 @@ public abstract class BaseAdapter extends android.widget.BaseAdapter {
     /**
      * 添加数据
      */
-    public boolean addItem(Object object) {
-        return mDataList.add(object);
+    public boolean addItem(T T) {
+        return mDataList.add(T);
     }
 
     /**
      * 在指定索引位置添加数据
      *
      * @param location 索引
-     * @param object   数据
+     * @param data     数据
      */
-    public void addItem(int location, Object object) {
-        mDataList.add(location, object);
+    public void addItem(int location, T data) {
+        mDataList.add(location, data);
     }
 
     /**
@@ -94,7 +96,7 @@ public abstract class BaseAdapter extends android.widget.BaseAdapter {
      *
      * @param collection 集合
      */
-    public boolean addItem(Collection<? extends Object> collection) {
+    public boolean addItem(Collection<? extends T> collection) {
         return mDataList.addAll(collection);
     }
 
@@ -104,18 +106,18 @@ public abstract class BaseAdapter extends android.widget.BaseAdapter {
      * @param location   索引
      * @param collection 数据集合
      */
-    public boolean addItem(int location, Collection<? extends Object> collection) {
+    public boolean addItem(int location, Collection<? extends T> collection) {
         return mDataList.addAll(location, collection);
     }
 
     /**
      * 移除指定对象数据
      *
-     * @param object 移除对象
+     * @param T 移除对象
      * @return 是否移除成功
      */
-    public boolean removeItem(Object object) {
-        return mDataList.remove(object);
+    public boolean removeItem(T T) {
+        return mDataList.remove(T);
     }
 
     /**
@@ -124,7 +126,7 @@ public abstract class BaseAdapter extends android.widget.BaseAdapter {
      * @param location 删除对象索引位置
      * @return 被删除的对象
      */
-    public Object removeItem(int location) {
+    public T removeItem(int location) {
         return mDataList.remove(location);
     }
 
@@ -134,7 +136,7 @@ public abstract class BaseAdapter extends android.widget.BaseAdapter {
      * @param collection 待移除的集合
      * @return 是否移除成功
      */
-    public boolean removeAll(Collection<? extends Object> collection) {
+    public boolean removeAll(Collection<? extends T> collection) {
         return mDataList.removeAll(collection);
     }
 
@@ -194,22 +196,17 @@ public abstract class BaseAdapter extends android.widget.BaseAdapter {
 
     /**
      * 更新Item视图，减少不必要的重绘
+     *
      * @param listView
-     * @param position
      */
     public void updateItemView(ListView listView, int position) {
-//        //换算成 Item View 在 ViewGroup 中的 index
-//        int index = position - listView.getFirstVisiblePosition();
-//        if (index >= 0 && index < listView.getChildCount()) {
-//            //更新数据
-//            AuthorInfo authorInfo = mAuthorInfoList.get(position);
-//            authorInfo.setNickName("Google Android");
-//            authorInfo.setMotto("My name is Android .");
-//            authorInfo.setPortrait(R.mipmap.ic_launcher);
-//            //更新单个Item
-//            View itemView = listView.getChildAt(index);
-//            getView(position, itemView, listView);
-//        }
+        //换算成 Item View 在 ViewGroup 中的 index
+        int index = position - listView.getFirstVisiblePosition();
+        if (index >= 0 && index < listView.getChildCount()) {
+            //更新单个Item
+            View itemView = listView.getChildAt(index);
+            getView(position, itemView, listView);
+        }
     }
 
 }
