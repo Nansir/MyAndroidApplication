@@ -13,9 +13,9 @@ import com.sir.app.robot.aseven.entity.ChildData;
  * Created by zhuyinan on 2016/12/1.
  */
 
-public class RecyclerAdapter extends BaseRecyclerAdapter<ChildData> {
+public class RecyclerViewAdapter extends BaseRecyclerAdapter<ChildData> {
 
-    public RecyclerAdapter(Activity context) {
+    public RecyclerViewAdapter(Activity context) {
         super(context);
     }
 

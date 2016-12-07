@@ -12,7 +12,7 @@ import android.view.MenuItem;
 import android.view.View;
 
 import com.sir.app.base.BaseActivity;
-import com.sir.app.robot.aseven.adapter.RecyclerAdapter;
+import com.sir.app.robot.aseven.adapter.RecyclerViewAdapter;
 import com.sir.app.robot.aseven.entity.ChildData;
 
 import butterknife.Bind;
@@ -22,12 +22,12 @@ import butterknife.Bind;
  * Contact by 445181052@qq.com
  */
 
-public class RecyclerViewActivity extends BaseActivity{
+public class RecyclerViewActivity extends BaseActivity {
 
     @Bind(R.id.recyclerView)
     RecyclerView recyclerView;
 
-    RecyclerAdapter recyclerAdapter;
+    RecyclerViewAdapter adapter;
 
 
     @Override
@@ -42,16 +42,16 @@ public class RecyclerViewActivity extends BaseActivity{
 
     @Override
     public void doBusiness(Context mContext) {
-        recyclerAdapter = new RecyclerAdapter(this);
-        for (int j = 0; j < 3; j++) {
+        adapter = new RecyclerViewAdapter(this);
+        for (int j = 0; j < 20; j++) {
             ChildData child = new ChildData();
-            child.setName("child" + (j + 1));
+            child.setName("RecyclerView" + (j + 1));
             child.setImageId(R.mipmap.ic_launcher);
-            recyclerAdapter.addItem(child);
+            adapter.addItem(child);
         }
 
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
-        recyclerView.setAdapter(recyclerAdapter);
+        recyclerView.setAdapter(adapter);
 
 
         //ItemTouchHelper 用于实现 RecyclerView Item 拖曳效果的类
@@ -76,7 +76,7 @@ public class RecyclerViewActivity extends BaseActivity{
             public boolean onMove(RecyclerView recyclerView, RecyclerView.ViewHolder viewHolder, RecyclerView.ViewHolder target) {
                 int fromPosition = viewHolder.getAdapterPosition();//要拖曳的位置
                 int toPosition = target.getAdapterPosition();//要放置的目标位置
-                recyclerAdapter.moveItem(fromPosition, toPosition);
+                adapter.moveItem(fromPosition, toPosition);
                 return true;
             }
 
@@ -87,7 +87,7 @@ public class RecyclerViewActivity extends BaseActivity{
             @Override
             public void onSwiped(RecyclerView.ViewHolder viewHolder, int direction) {
                 int position = viewHolder.getAdapterPosition();//获取要滑动删除的Item位置
-                recyclerAdapter.removeItem(position);
+                adapter.removeItem(position);
             }
 
             @Override
@@ -117,24 +117,29 @@ public class RecyclerViewActivity extends BaseActivity{
             LinearLayoutManager linearLayoutManager = new LinearLayoutManager(RecyclerViewActivity.this);
             linearLayoutManager.setOrientation(LinearLayoutManager.VERTICAL);
             recyclerView.setLayoutManager(linearLayoutManager);
-            recyclerView.setAdapter(recyclerAdapter);
+            recyclerView.setAdapter(adapter);
 
         } else if (itemId == R.id.grid) {//网格布局
             GridLayoutManager gridLayoutManager = new GridLayoutManager(RecyclerViewActivity.this, 3);
             gridLayoutManager.setOrientation(GridLayoutManager.HORIZONTAL);
             recyclerView.setLayoutManager(gridLayoutManager);
-            recyclerView.setAdapter(recyclerAdapter);
+            recyclerView.setAdapter(adapter);
 
         } else if (itemId == R.id.staggered) {//瀑布流
             StaggeredGridLayoutManager staggeredGridLayoutManager = new StaggeredGridLayoutManager(2, StaggeredGridLayoutManager.VERTICAL);
             recyclerView.setLayoutManager(staggeredGridLayoutManager);
-            recyclerView.setAdapter(recyclerAdapter);
+            recyclerView.setAdapter(adapter);
 
         } else if (itemId == R.id.insert_item) {//加一条
-            recyclerAdapter.notifyItemInserted(2);
+            ChildData child = new ChildData();
+            child.setName("RecyclerView-add");
+            child.setImageId(R.mipmap.ic_launcher);
+            adapter.addItem(child, 3);
+            adapter.notifyItemInserted(3);
 
         } else if (itemId == R.id.delete_item) {//减一条
-            recyclerAdapter.notifyItemChanged(3);
+            adapter.removeItem(3);
+            adapter.notifyItemChanged(3);
 
         } else if (itemId == R.id.update_item) {//局部刷新
             RecyclerView.LayoutManager layoutManager = recyclerView.getLayoutManager();
@@ -144,7 +149,7 @@ public class RecyclerViewActivity extends BaseActivity{
                 if (RecyclerView.NO_POSITION != position) {
 
 
-                    recyclerAdapter.notifyItemChanged(position);
+                    adapter.notifyItemChanged(position);
                 }
 
             }

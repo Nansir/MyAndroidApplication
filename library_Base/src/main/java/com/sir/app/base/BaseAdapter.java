@@ -2,11 +2,14 @@ package com.sir.app.base;
 
 import java.util.ArrayList;
 import java.util.Collection;
+import java.util.Collections;
 import java.util.List;
 
 import android.app.Activity;
 import android.util.SparseArray;
+import android.view.LayoutInflater;
 import android.view.View;
+import android.view.ViewGroup;
 import android.widget.ListView;
 
 import com.nostra13.universalimageloader.core.DisplayImageOptions;
@@ -18,7 +21,7 @@ import static android.R.attr.data;
  * Created by zhuyinan on 2016/4/25.
  * Contact by 445181052@qq.com
  */
-public abstract class BaseAdapter<T> extends android.widget.BaseAdapter {
+public abstract class BaseAdapter<T> extends android.widget.BaseAdapter implements IBaseAdapter<T> {
     /**
      * 数据存储集合
      **/
@@ -65,6 +68,20 @@ public abstract class BaseAdapter<T> extends android.widget.BaseAdapter {
         return position;
     }
 
+    @Override
+    public View getView(int position, View view, ViewGroup viewGroup) {
+        ViewHolder holder;
+        if (view == null) {
+            view = LayoutInflater.from(mContext).inflate(bindLayout(), null);
+            holder = ViewHolder.get(view);
+            view.setTag(holder);
+        } else {
+            holder = (ViewHolder) view.getTag();
+        }
+        onBindHolder(holder, position);
+        return view;
+    }
+
     /**
      * 获取当前页
      *
@@ -74,11 +91,21 @@ public abstract class BaseAdapter<T> extends android.widget.BaseAdapter {
         return (getCount() / mPerPageSize) + 1;
     }
 
+
+    /**
+     * 清除所有
+     */
+    @Override
+    public void clearAll() {
+        mDataList.clear();
+    }
+
     /**
      * 添加数据
      */
-    public boolean addItem(T T) {
-        return mDataList.add(T);
+    @Override
+    public void addItem(T T) {
+        mDataList.add(T);
     }
 
     /**
@@ -87,6 +114,7 @@ public abstract class BaseAdapter<T> extends android.widget.BaseAdapter {
      * @param location 索引
      * @param data     数据
      */
+    @Override
     public void addItem(int location, T data) {
         mDataList.add(location, data);
     }
@@ -96,28 +124,9 @@ public abstract class BaseAdapter<T> extends android.widget.BaseAdapter {
      *
      * @param collection 集合
      */
-    public boolean addItem(Collection<? extends T> collection) {
-        return mDataList.addAll(collection);
-    }
-
-    /**
-     * 在指定索引位置添加数据集合
-     *
-     * @param location   索引
-     * @param collection 数据集合
-     */
-    public boolean addItem(int location, Collection<? extends T> collection) {
-        return mDataList.addAll(location, collection);
-    }
-
-    /**
-     * 移除指定对象数据
-     *
-     * @param T 移除对象
-     * @return 是否移除成功
-     */
-    public boolean removeItem(T T) {
-        return mDataList.remove(T);
+    @Override
+    public void addItem(Collection<? extends T> collection) {
+        mDataList.addAll(collection);
     }
 
     /**
@@ -126,26 +135,11 @@ public abstract class BaseAdapter<T> extends android.widget.BaseAdapter {
      * @param location 删除对象索引位置
      * @return 被删除的对象
      */
-    public T removeItem(int location) {
-        return mDataList.remove(location);
+    @Override
+    public void removeItem(int location) {
+        mDataList.remove(location);
     }
 
-    /**
-     * 移除指定集合对象
-     *
-     * @param collection 待移除的集合
-     * @return 是否移除成功
-     */
-    public boolean removeAll(Collection<? extends T> collection) {
-        return mDataList.removeAll(collection);
-    }
-
-    /**
-     * 清空数据
-     */
-    public void clear() {
-        mDataList.clear();
-    }
 
     /**
      * 获取Activity方法
@@ -157,41 +151,6 @@ public abstract class BaseAdapter<T> extends android.widget.BaseAdapter {
             return mContext;
         }
         return null;
-    }
-
-    private DisplayImageOptions mOption;
-
-    public DisplayImageOptions getImageOptionsn() {
-        return getImageOptionsn(R.mipmap.ic_launcher, R.mipmap.ic_launcher, R.mipmap.ic_launcher);
-    }
-
-    public DisplayImageOptions getImageOptionsn(int onLoading, int onFail, int emptyUri) {
-        if (mOption == null) {
-            mOption = ((BaseApplication) BaseApplication.getContext()).getImageOptions(onLoading, onFail, emptyUri);
-        }
-        return mOption;
-    }
-
-    /**
-     * ViewHolder的内存优化方案
-     *
-     * @param view
-     * @param id
-     * @param <T>
-     * @return
-     */
-    public <T extends View> T getViewHolder(View view, int id) {
-        SparseArray<View> viewHolder = (SparseArray<View>) view.getTag();
-        if (viewHolder == null) {
-            viewHolder = new SparseArray<>();
-            view.setTag(viewHolder);
-        }
-        View childView = viewHolder.get(id);
-        if (childView == null) {
-            childView = view.findViewById(id);
-            viewHolder.put(id, childView);
-        }
-        return (T) childView;
     }
 
     /**
@@ -208,5 +167,22 @@ public abstract class BaseAdapter<T> extends android.widget.BaseAdapter {
             getView(position, itemView, listView);
         }
     }
+
+    private DisplayImageOptions mOption;
+
+    public DisplayImageOptions getImageOptionsn() {
+        return getImageOptionsn(R.mipmap.ic_launcher, R.mipmap.ic_launcher, R.mipmap.ic_launcher);
+    }
+
+    public DisplayImageOptions getImageOptionsn(int onLoading, int onFail, int emptyUri) {
+        if (mOption == null) {
+            mOption = ((BaseApplication) BaseApplication.getContext()).getImageOptions(onLoading, onFail, emptyUri);
+        }
+        return mOption;
+    }
+
+    public abstract int bindLayout();
+
+    public abstract void onBindHolder(ViewHolder holder, int position);
 
 }

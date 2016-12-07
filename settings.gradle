@@ -1,6 +1,6 @@
-include ':app_ZXing'
+include ':library_ZXing', ':app_BTools'
 include ':app_ASeven'
-include ':app_SystemUi'
+include ':app_ASystemUi'
 include ':app_MD360'
 
 include ':app_A'

@@ -9,17 +9,16 @@ import java.util.Collection;
 
 public interface IBaseAdapter<T> {
 
-    public T getItem(T data);
+    public void clearAll();
+
+    public T getItem(int position);
 
     public void addItem(T data);
 
+    public void addItem(int location, T data);
+
     public void removeItem(int position);
 
-    public void updateItem(int position, T data);
-
-    public void shift(int fromPosition, int toPosition);
-
     public void addItem(Collection<? extends T> list);
-
 
 }

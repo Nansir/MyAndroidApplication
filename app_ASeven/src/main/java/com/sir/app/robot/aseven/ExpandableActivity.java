@@ -24,7 +24,7 @@ public class ExpandableActivity extends BaseActivity {
     @Bind(R.id.expanded_list)
     ExpandableListView listView;
 
-    ExpandableListAdapter expandableListAdapter;
+    ExpandableListAdapter adapter;
     private List<GroupData> dataSource;
 
     @Override
@@ -40,9 +40,9 @@ public class ExpandableActivity extends BaseActivity {
     @Override
     public void doBusiness(Context mContext) {
         initDataSource();
-        expandableListAdapter = new ExpandableListAdapter(this);
-        expandableListAdapter.addItem(dataSource);
-        listView.setAdapter(expandableListAdapter);
+        adapter = new ExpandableListAdapter(this);
+        adapter.addItem(dataSource);
+        listView.setAdapter(adapter);
 
     }
 
@@ -52,19 +52,19 @@ public class ExpandableActivity extends BaseActivity {
      */
     private void initDataSource() {
         dataSource = new ArrayList<>();
-        for (int i = 0; i < 6; i++) {
+        for (int i = 0; i < 20; i++) {
             GroupData group = new GroupData();
-            group.setName("group" + (i + 1));
+            group.setName("ExpandableListGroup" + (i + 1));
             ArrayList<ChildData> childs = new ArrayList<>();
             for (int j = 0; j < 3; j++) {
                 ChildData child = new ChildData();
-                child.setName("child" + (j + 1));
+                child.setName("ExpandableListChild" + (j + 1));
                 child.setImageId(R.mipmap.ic_launcher);
                 childs.add(child);
             }
             if (i == 2) {
                 ChildData child = new ChildData();
-                child.setName("child" + 4);
+                child.setName("ExpandableListChild" + 4);
                 child.setImageId(R.mipmap.ic_launcher);
                 childs.add(child);
             }

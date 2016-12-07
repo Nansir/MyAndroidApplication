@@ -14,20 +14,103 @@
     tools:context="com.sir.app.robot.aseven.MainActivity"
     tools:showIn="@layout/app_bar_main">
 
+    <com.sir.app.robot.aseven.widget.WrapLayout
+        android:id="@+id/wrapLayout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@drawable/lin_content_stroke"
+        android:padding="6dp">
 
-    <Button
-        android:id="@+id/btn_ExpandableList"
+
+        <Button
+            android:id="@+id/btn_ExpandableList"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="@color/colorPrimary"
+            android:padding="5dp"
+            android:text="ExpandableList"
+            android:textAllCaps="false"
+            android:textColor="@android:color/white" />
+
+        <Button
+            android:id="@+id/btn_RecyclerView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="@color/colorPrimary"
+            android:padding="5dp"
+            android:text="RecyclerView"
+            android:textAllCaps="false"
+            android:textColor="@android:color/white" />
+
+        <Button
+            android:id="@+id/btn_ListView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="@color/colorPrimary"
+            android:padding="5dp"
+            android:text="ListView"
+            android:textAllCaps="false"
+            android:textColor="@android:color/white" />
+    </com.sir.app.robot.aseven.widget.WrapLayout>
+
+    <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="ExpandableList"
-        android:textAllCaps="false" />
+        android:layout_marginTop="20dp"
+        android:text="布局" />
 
-    <Button
-        android:id="@+id/btn_RecyclerView"
+    <RadioGroup
+        android:id="@+id/rg_gravity"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="20dp"
+        android:orientation="horizontal">
+
+        <RadioButton
+            android:id="@+id/rb_top"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="上" />
+
+        <RadioButton
+            android:id="@+id/rb_center"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="中" />
+
+        <RadioButton
+            android:id="@+id/rb_bottom"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="下" />
+
+    </RadioGroup>
+
+    <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="RecyclerView"
-        android:textAllCaps="false" />
+        android:text="垂直间距（0dp～30dp）" />
 
+    <SeekBar
+        android:id="@+id/sb_horizontal"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="20dp"
+        android:max="30" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="垂直间距（0dp～30dp）" />
+
+    <SeekBar
+        android:id="@+id/sb_vertical"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="40dp"
+        android:max="30" />
 
 </LinearLayout>

@@ -164,7 +164,15 @@ public abstract class BaseRecyclerAdapter<T> extends RecyclerView.Adapter<ViewHo
      */
     public void addItem(T data) {
         mDataList.add(data);
-        notifyItemChanged(mDataList.size());
+    }
+
+    /**
+     * 追加一条数据
+     *
+     * @param data 追加的数据
+     */
+    public void addItem(T data, int position) {
+        mDataList.add(position, data);
     }
 
     /**
@@ -177,7 +185,6 @@ public abstract class BaseRecyclerAdapter<T> extends RecyclerView.Adapter<ViewHo
     }
 
 
-
     /**
      * 删除数据Item
      *
@@ -185,7 +192,6 @@ public abstract class BaseRecyclerAdapter<T> extends RecyclerView.Adapter<ViewHo
      */
     public void removeItem(int position) {
         mDataList.remove(position);
-        notifyItemRemoved(position);
     }
 
 

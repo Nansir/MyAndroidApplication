@@ -10,15 +10,31 @@ import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.RadioGroup;
+import android.widget.SeekBar;
+import android.widget.Switch;
 
 import com.sir.app.base.BaseActivity;
 import com.sir.app.base.tools.ToolAlert;
 import com.sir.app.base.tools.ToolSnackbar;
+import com.sir.app.robot.aseven.widget.WrapLayout;
 
+import butterknife.Bind;
 import butterknife.OnClick;
 
-public class MainActivity extends BaseActivity implements NavigationView.OnNavigationItemSelectedListener {
+import static android.R.attr.id;
 
+public class MainActivity extends BaseActivity implements NavigationView.OnNavigationItemSelectedListener,
+                                            SeekBar.OnSeekBarChangeListener, RadioGroup.OnCheckedChangeListener {
+
+    @Bind(R.id.sb_horizontal)
+    SeekBar sbHorizontal;
+    @Bind(R.id.sb_vertical)
+    SeekBar sbVertical;
+    @Bind(R.id.rg_gravity)
+    RadioGroup rgGravity;
+    @Bind(R.id.wrapLayout)
+    WrapLayout wrapLayout;
 
     @Override
     public int bindLayout() {
@@ -58,6 +74,10 @@ public class MainActivity extends BaseActivity implements NavigationView.OnNavig
         NavigationView navigationView = (NavigationView) findViewById(R.id.nav_view);
         navigationView.setNavigationItemSelectedListener(this);
 
+
+        rgGravity.setOnCheckedChangeListener(this);
+        sbHorizontal.setOnSeekBarChangeListener(this);
+        sbVertical.setOnSeekBarChangeListener(this);
 
     }
 
@@ -111,7 +131,7 @@ public class MainActivity extends BaseActivity implements NavigationView.OnNavig
     }
 
 
-    @OnClick({R.id.btn_ExpandableList, R.id.btn_RecyclerView})
+    @OnClick({R.id.btn_ExpandableList, R.id.btn_RecyclerView, R.id.btn_ListView})
     public void onclick_btn(View view) {
         switch (view.getId()) {
             case R.id.btn_ExpandableList:
@@ -119,6 +139,49 @@ public class MainActivity extends BaseActivity implements NavigationView.OnNavig
                 break;
             case R.id.btn_RecyclerView:
                 getOperation().forward(RecyclerViewActivity.class);
+                break;
+            case R.id.btn_ListView:
+                getOperation().forward(ListViewActivity.class);
+                break;
+        }
+    }
+
+
+    @Override
+    public void onStartTrackingTouch(SeekBar seekBar) {
+
+    }
+
+    @Override
+    public void onStopTrackingTouch(SeekBar seekBar) {
+
+    }
+
+    @Override
+    public void onCheckedChanged(RadioGroup radioGroup, int id) {
+        switch (id) {
+            case R.id.rb_bottom:
+                wrapLayout.setGravity(WrapLayout.GRAVITY_BOTTOM);
+                break;
+            case R.id.rb_center:
+                wrapLayout.setGravity(WrapLayout.GRAVITY_CENTER);
+                break;
+            case R.id.rb_top:
+                wrapLayout.setGravity(WrapLayout.GRAVITY_TOP);
+                break;
+        }
+    }
+
+    @Override
+    public void onProgressChanged(SeekBar seekBar, int progress, boolean b) {
+        switch (seekBar.getId()) {
+            case R.id.sb_horizontal:
+                int horizontal = (int) (progress * getResources().getDisplayMetrics().density);
+                wrapLayout.setHorizontalSpacing(horizontal);
+                break;
+            case R.id.sb_vertical:
+                int vertical = (int) (progress * getResources().getDisplayMetrics().density);
+                wrapLayout.setVerticalSpacing(vertical);
                 break;
         }
     }
