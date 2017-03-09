@@ -1,0 +1,83 @@
+[
+    {
+        "outputFile": "E:\\StudioWorkspace-3\\MyApplication\\app_ASystemUi\\build\\intermediates\\incremental\\mergeDebugResources\\merged.dir\\values-v24\\values-v24.xml",
+        "map": [
+            {
+                "to": {
+                    "startLine": 2,
+                    "startColumn": 4,
+                    "startOffset": 55,
+                    "endColumn": 68,
+                    "endOffset": 119
+                },
+                "from": {
+                    "file": "C:\\Users\\zhuyinan\\.android\\build-cache\\7891e4f2fce955a9100ecea40a65af9d5af1e7e3\\output\\res\\values-v24\\values-v24.xml",
+                    "position": {
+                        "startLine": 2,
+                        "startColumn": 4,
+                        "startOffset": 55,
+                        "endColumn": 68,
+                        "endOffset": 119
+                    }
+                }
+            },
+            {
+                "to": {
+                    "startLine": 3,
+                    "startColumn": 4,
+                    "startOffset": 124,
+                    "endColumn": 63,
+                    "endOffset": 183
+                },
+                "from": {
+                    "file": "C:\\Users\\zhuyinan\\.android\\build-cache\\7891e4f2fce955a9100ecea40a65af9d5af1e7e3\\output\\res\\values-v24\\values-v24.xml",
+                    "position": {
+                        "startLine": 3,
+                        "startColumn": 4,
+                        "startOffset": 124,
+                        "endColumn": 63,
+                        "endOffset": 183
+                    }
+                }
+            },
+            {
+                "to": {
+                    "startLine": 4,
+                    "startColumn": 4,
+                    "startOffset": 188,
+                    "endColumn": 68,
+                    "endOffset": 252
+                },
+                "from": {
+                    "file": "C:\\Users\\zhuyinan\\.android\\build-cache\\7891e4f2fce955a9100ecea40a65af9d5af1e7e3\\output\\res\\values-v24\\values-v24.xml",
+                    "position": {
+                        "startLine": 4,
+                        "startColumn": 4,
+                        "startOffset": 188,
+                        "endColumn": 68,
+                        "endOffset": 252
+                    }
+                }
+            },
+            {
+                "to": {
+                    "startLine": 5,
+                    "startColumn": 4,
+                    "startOffset": 257,
+                    "endColumn": 69,
+                    "endOffset": 322
+                },
+                "from": {
+                    "file": "C:\\Users\\zhuyinan\\.android\\build-cache\\7891e4f2fce955a9100ecea40a65af9d5af1e7e3\\output\\res\\values-v24\\values-v24.xml",
+                    "position": {
+                        "startLine": 5,
+                        "startColumn": 4,
+                        "startOffset": 257,
+                        "endColumn": 69,
+                        "endOffset": 322
+                    }
+                }
+            }
+        ]
+    }
+]

@@ -25,7 +25,7 @@ public abstract class BaseRecyclerAdapter<T> extends RecyclerView.Adapter<ViewHo
     protected List<T> mDataList;
     protected SparseArrayCompat<View> mFootViews;
     protected SparseArrayCompat<View> mHeaderViews;
-    protected OnItemClickListener<ViewHolder> listener;
+    protected OnItemClickListener listener;
 
     private final int BASE_ITEM_TYPE_HEADER = 100000;
     private final int BASE_ITEM_TYPE_FOOTER = 200000;
@@ -56,6 +56,7 @@ public abstract class BaseRecyclerAdapter<T> extends RecyclerView.Adapter<ViewHo
             public boolean onLongClick(View view) {
                 if (listener != null) {
                     listener.onItemLongClick(holder, position);
+                    return true;
                 }
                 return false;
             }

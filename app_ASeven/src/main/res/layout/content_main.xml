@@ -51,6 +51,26 @@
             android:text="ListView"
             android:textAllCaps="false"
             android:textColor="@android:color/white" />
+
+        <Button
+            android:id="@+id/btn_Otto"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="@color/colorPrimary"
+            android:padding="5dp"
+            android:text="Otto"
+            android:textAllCaps="false"
+            android:textColor="@android:color/white" />
+
+        <Button
+            android:id="@+id/btn_Expand"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="@color/colorPrimary"
+            android:padding="5dp"
+            android:text="Expand"
+            android:textAllCaps="false"
+            android:textColor="@android:color/white" />
     </com.sir.app.robot.aseven.widget.WrapLayout>
 
     <TextView

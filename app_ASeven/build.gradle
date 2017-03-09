@@ -1,13 +1,13 @@
 apply plugin: 'com.android.application'
 
 android {
-    compileSdkVersion 25
-    buildToolsVersion "24.0.0"
+    compileSdkVersion COMPILE_SDK_VERSION
+    buildToolsVersion BUILD_TOOLS_VERSION
 
     defaultConfig {
         applicationId "com.sir.app.robot.aseven"
-        minSdkVersion 15
-        targetSdkVersion 25
+        minSdkVersion MIN_SDK_VERSION
+        targetSdkVersion TARGET_SDK_VERSION
         versionCode 1
         versionName "1.0"
     }
@@ -24,8 +24,9 @@ dependencies {
     compile 'com.android.support:appcompat-v7:25.0.1'
     compile 'com.android.support:design:25.0.1'
     testCompile 'junit:junit:4.12'
-    compile 'org.greenrobot:eventbus:3.0.0'
-    //组件间通信
+
+    compile 'com.kyleduo.switchbutton:library:1.2.9'
     compile project(':library_Base')
+    compile project(':library_Expand')
 
 }

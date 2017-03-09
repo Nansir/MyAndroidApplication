@@ -3,6 +3,7 @@ package com.sir.app.base;
 import android.annotation.SuppressLint;
 import android.app.Fragment;
 import android.os.Bundle;
+import android.support.annotation.IdRes;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -43,6 +44,9 @@ public abstract class BaseFragment extends Fragment implements IBaseFragment {
         //业务处理
         doBusiness(getActivity());
         return mContextView;
+    }
+    public View findViewById(@IdRes int id) {
+        return mContextView.findViewById(id);
     }
 
     /**

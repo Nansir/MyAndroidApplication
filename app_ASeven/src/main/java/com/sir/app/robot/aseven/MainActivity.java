@@ -7,25 +7,26 @@ import android.support.v4.view.GravityCompat;
 import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.ActionBarDrawerToggle;
 import android.support.v7.widget.Toolbar;
+import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.RadioGroup;
 import android.widget.SeekBar;
-import android.widget.Switch;
 
 import com.sir.app.base.BaseActivity;
+import com.sir.app.base.event.BusProvider;
+import com.sir.app.base.event.DataChangedEvent;
 import com.sir.app.base.tools.ToolAlert;
 import com.sir.app.base.tools.ToolSnackbar;
 import com.sir.app.robot.aseven.widget.WrapLayout;
+import com.squareup.otto.Subscribe;
 
 import butterknife.Bind;
 import butterknife.OnClick;
 
-import static android.R.attr.id;
-
 public class MainActivity extends BaseActivity implements NavigationView.OnNavigationItemSelectedListener,
-                                            SeekBar.OnSeekBarChangeListener, RadioGroup.OnCheckedChangeListener {
+        SeekBar.OnSeekBarChangeListener, RadioGroup.OnCheckedChangeListener {
 
     @Bind(R.id.sb_horizontal)
     SeekBar sbHorizontal;
@@ -92,6 +93,18 @@ public class MainActivity extends BaseActivity implements NavigationView.OnNavig
         }
     }
 
+    @Subscribe   //订阅事件DataChangedEvent
+    public void sayGoodOnEvent(final DataChangedEvent event) {
+        Log.e("event", "MainActivity " + event.getContent());
+    }
+
+    @Override
+    protected void onResume() {
+        super.onResume();
+        Log.e("event", "onResume");
+        BusProvider.getBusInstance().register(this);//注册
+    }
+
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         getMenuInflater().inflate(R.menu.main, menu);
@@ -131,7 +144,8 @@ public class MainActivity extends BaseActivity implements NavigationView.OnNavig
     }
 
 
-    @OnClick({R.id.btn_ExpandableList, R.id.btn_RecyclerView, R.id.btn_ListView})
+    @OnClick({R.id.btn_ExpandableList, R.id.btn_RecyclerView, R.id.btn_ListView
+            , R.id.btn_Otto,R.id.btn_Expand})
     public void onclick_btn(View view) {
         switch (view.getId()) {
             case R.id.btn_ExpandableList:
@@ -143,6 +157,13 @@ public class MainActivity extends BaseActivity implements NavigationView.OnNavig
             case R.id.btn_ListView:
                 getOperation().forward(ListViewActivity.class);
                 break;
+            case R.id.btn_Otto:
+                getOperation().forward(OttoActivity.class);
+                break;
+            case R.id.btn_Expand:
+                getOperation().forward(ExpandActivity.class);
+                break;
+
         }
     }
 

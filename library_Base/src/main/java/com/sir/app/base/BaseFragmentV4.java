@@ -1,6 +1,7 @@
 package com.sir.app.base;
 
 import android.os.Bundle;
+import android.support.annotation.IdRes;
 import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -55,6 +56,9 @@ public abstract class BaseFragmentV4 extends Fragment implements IBaseFragment {
         return this.mBaseOperation;
     }
 
+    public View findViewById(@IdRes int id) {
+        return mContextView.findViewById(id);
+    }
 
     @Override
     public void onDestroy() {

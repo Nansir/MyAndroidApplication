@@ -44,6 +44,14 @@
             android:name=".ListViewActivity"
             android:label="ListView" />
 
+        <activity android:name=".OttoActivity"
+            android:label="Otto"/>
+
+
+        <activity android:name=".ExpandActivity"
+
+            />
+
     </application>
 
 </manifest>

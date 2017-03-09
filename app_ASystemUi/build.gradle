@@ -25,7 +25,7 @@ dependencies {
 
     compile libSupportAppcompat_v7
     compile libSupportAppcompat_v4
-    compile libSupportCardview
+    compile libSupportCardView
     compile libSupportDesign
 
 }

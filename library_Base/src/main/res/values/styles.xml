@@ -70,4 +70,10 @@
         <item name="DialogSpotCount">5</item>
     </style>
 
+    <style name="popup_window_anim_style">
+        <item name="android:windowEnterAnimation">@anim/base_slide_right_in</item>
+        <item name="android:windowExitAnimation">@anim/base_slide_right_out</item>
+    </style>
+
+
 </resources>

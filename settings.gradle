@@ -1,4 +1,4 @@
-include ':library_ZXing', ':app_BTools'
+include ':library_ZXing', ':app_BTools', ':library_Expand'
 include ':app_ASeven'
 include ':app_ASystemUi'
 include ':app_MD360'
