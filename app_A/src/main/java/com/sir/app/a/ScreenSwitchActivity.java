@@ -63,10 +63,10 @@ public class ScreenSwitchActivity extends BaseActivity {
         super.onConfigurationChanged(newConfig);
         if (instance.isPortrait()) {
             // 切换成竖屏
-            ToolAlert.showShort("竖屏");
+            ToolAlert.showShort(this,"竖屏");
         } else {
             // 切换成横屏
-           ToolAlert.showShort("横屏");
+           ToolAlert.showShort(this,"横屏");
         }
     }
 

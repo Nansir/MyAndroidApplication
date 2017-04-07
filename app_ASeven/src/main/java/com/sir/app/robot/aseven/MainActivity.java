@@ -60,7 +60,7 @@ public class MainActivity extends BaseActivity implements NavigationView.OnNavig
                 ToolSnackbar.showLong(view, "Snackbar", "btn", new View.OnClickListener() {
                     @Override
                     public void onClick(View view) {
-                        ToolAlert.showShort("Snackbar");
+
                     }
                 });
             }

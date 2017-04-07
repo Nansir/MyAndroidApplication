@@ -44,7 +44,6 @@ public class ExpandableListAdapter extends BaseExpandableListAdapter<ChildData, 
         viewHolder.setOnClickListener(R.id.btn_item_child, new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                ToolAlert.showShort("点击"+groupPosition+"="+childPosition);
 
             }
         });

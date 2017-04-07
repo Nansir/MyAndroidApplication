@@ -15,6 +15,7 @@ import android.widget.Toast;
 import com.sir.app.R;
 import com.sir.app.base.BaseActivity;
 import com.sir.app.base.BaseAdapter;
+import com.sir.app.base.ViewHolder;
 import com.sir.app.base.tools.ToolAlert;
 import com.sir.app.base.tools.ToolResource;
 import com.sir.app.material.widget.ListViewExt;
@@ -93,7 +94,7 @@ public class FABToolActivity extends BaseActivity implements View.OnClickListene
     @Override
     public void doBusiness(Context mContext) {
         //设置进度圈的背景色。
-        swipeRefreshLayout.setProgressBackgroundColorSchemeColor(ToolResource.getColor(R.color.colorPrimaryDark));
+        swipeRefreshLayout.setProgressBackgroundColorSchemeColor(ToolResource.getColor(mContext,R.color.colorPrimaryDark));
         //设置进度动画的颜色。
         swipeRefreshLayout.setColorSchemeResources(R.color.white);
         //设置进度圈的大小，只有两个值：DEFAULT、LARGE
@@ -119,16 +120,16 @@ public class FABToolActivity extends BaseActivity implements View.OnClickListene
     public void onClick(View v) {
         switch (v.getId()) {
             case R.id.one:
-                ToolAlert.showShort("拷贝");
+                ToolAlert.showShort(this,"拷贝");
                 break;
             case R.id.two:
-                ToolAlert.showShort("粘贴");
+                ToolAlert.showShort(this,"粘贴");
                 break;
             case R.id.three:
-                ToolAlert.showShort("全选");
+                ToolAlert.showShort(this,"全选");
                 break;
             case R.id.four:
-                ToolAlert.showShort("剪切");
+                ToolAlert.showShort(this,"剪切");
                 break;
         }
         layout.hide();
@@ -142,11 +143,13 @@ public class FABToolActivity extends BaseActivity implements View.OnClickListene
         }
 
         @Override
-        public View getView(int position, View convertView, ViewGroup parent) {
-            convertView = LayoutInflater.from(getContext()).inflate(R.layout.dummy_fragment, null);
-            TextView textView = (TextView) convertView.findViewById(R.id.text1);
-            textView.setText(getItem(position).toString());
-            return convertView;
+        public int bindLayout() {
+            return R.layout.dummy_fragment;
+        }
+
+        @Override
+        public void onBindHolder(ViewHolder holder, int position) {
+            holder.setText(R.id.text1,getItem(position).toString());
         }
     }
 }

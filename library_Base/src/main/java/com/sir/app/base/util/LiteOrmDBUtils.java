@@ -9,12 +9,12 @@ import com.litesuits.orm.db.model.ConflictAlgorithm;
 
 import java.util.List;
 /**
- * 数据库
+ * 数据库相关辅助类
  * @author zhuyinan
  *Created by zhuyinan on 2016/4/25.
  * Contact by 445181052@qq.com
  */
-public class LiteOrmDBUtil {
+public class LiteOrmDBUtils {
 	public static String DB_NAME;
     public static LiteOrm liteOrm;
      

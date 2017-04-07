@@ -31,7 +31,7 @@ public class RecyclerViewAdapter extends BaseRecyclerAdapter<ChildData> {
         holder.setOnClickListener(R.id.btn_item_child, new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                ToolAlert.showShort("点击" + position);
+
             }
         });
     }

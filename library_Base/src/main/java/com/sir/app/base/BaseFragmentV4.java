@@ -2,6 +2,7 @@ package com.sir.app.base;
 
 import android.os.Bundle;
 import android.support.annotation.IdRes;
+import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -25,6 +26,8 @@ public abstract class BaseFragmentV4 extends Fragment implements IBaseFragment {
      **/
     private Operation mBaseOperation = null;
 
+    private boolean hasFetchData; // 标识已经触发过懒加载数据
+
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
@@ -36,17 +39,26 @@ public abstract class BaseFragmentV4 extends Fragment implements IBaseFragment {
             }
         } else {
             mContextView = inflater.inflate(bindLayout(), null);
-
+            //初始化ButterKnife
             ButterKnife.bind(this,mContextView);
-
             // 控件初始化
             initView(mContextView);
             //实例化共通操作
             mBaseOperation = new Operation(getActivity());
         }
-        //业务处理
-        doBusiness(getActivity());
         return mContextView;
+    }
+
+    @Override
+    public void onViewCreated(View view, @Nullable Bundle savedInstanceState) {
+        super.onViewCreated(view, savedInstanceState);
+        //业务处理操作
+        doBusiness(getActivity());
+        //视图已经准备完毕进行懒加载
+        if (getUserVisibleHint() && !hasFetchData) {
+            hasFetchData = true;
+            lazyFetchData();
+        }
     }
 
     /**

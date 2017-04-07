@@ -144,8 +144,8 @@ public class MainActivity extends BaseActivity
     @OnClick(R.id.btn_Bao)
     public void btnBao() {
 
-        ToolAlert.showShort("启动");
-        Intent mIntent = new Intent( );
+        ToolAlert.showShort(this, "启动");
+        Intent mIntent = new Intent();
 
         mIntent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
         ComponentName comp = new ComponentName("com.bdk.blesample", "com.clj.blesample.MainActivity");

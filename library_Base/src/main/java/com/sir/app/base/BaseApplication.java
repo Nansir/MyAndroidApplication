@@ -13,7 +13,6 @@ import com.nostra13.universalimageloader.core.ImageLoaderConfiguration;
 import com.nostra13.universalimageloader.core.assist.ImageScaleType;
 import com.nostra13.universalimageloader.core.assist.QueueProcessingType;
 import com.nostra13.universalimageloader.core.display.RoundedBitmapDisplayer;
-import com.sir.app.base.tools.ToolNetwork;
 
 import java.lang.ref.WeakReference;
 import java.util.HashMap;
@@ -55,15 +54,6 @@ public class BaseApplication extends Application {
     public void onCreate() {
         super.onCreate();
         instance = this;
-    }
-
-    /**
-     * 获取网络是否已连接
-     *
-     * @return
-     */
-    public static boolean isNetworkReady() {
-        return ToolNetwork.isConnected();
     }
 
 

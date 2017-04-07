@@ -9,7 +9,6 @@ import android.view.View;
  * Contact by 445181052@qq.com
  */
 public interface IBaseFragment {
-
 	/**
 	 * 绑定渲染视图的布局文件
 	 * @return 布局文件资源id
@@ -26,5 +25,10 @@ public interface IBaseFragment {
 	 * @param mContext  当前Activity对象
 	 */
 	public void doBusiness(Context mContext);
+
+	/**
+	 * 懒加载的方式获取数据，仅在满足fragment可见和视图已经准备好的时候调用一次
+	 */
+	public void lazyFetchData();
 	
 }

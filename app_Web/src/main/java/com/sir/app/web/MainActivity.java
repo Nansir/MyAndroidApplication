@@ -10,10 +10,10 @@ import android.view.View;
 import android.widget.TextView;
 
 import com.sir.app.base.tools.ToolAlert;
-import com.sir.app.base.tools.ToolNetwork;
+import com.sir.app.base.util.NetWorkUtils;
 import com.sir.app.web.service.MyAndServer;
 
-public class MainActivity extends AppCompatActivity{
+public class MainActivity extends AppCompatActivity {
 
     private boolean isBind = false;
     private Intent serviceIntent;
@@ -34,7 +34,7 @@ public class MainActivity extends AppCompatActivity{
                 if (isBind) {
                     msg = "Server已经启动";
                 } else {
-                    if (ToolNetwork.isAvailable()) {
+                    if (NetWorkUtils.isConnected(MainActivity.this)) {
                         doBusiness();
 
                         serviceIntent = new Intent(MainActivity.this, MyAndServer.class);
@@ -42,7 +42,7 @@ public class MainActivity extends AppCompatActivity{
                         isBind = true;
                         msg = "启动Server";
                     } else {
-                        ToolAlert.showShort("请检查网络");
+                        ToolAlert.showShort(MainActivity.this,"请检查网络");
                         return;
                     }
                 }
@@ -62,7 +62,7 @@ public class MainActivity extends AppCompatActivity{
 
 
     private void doBusiness() {
-        String ip = ToolNetwork.getLocalIpAddress() + ":" + MyAndServer.PORT;
+        String ip = NetWorkUtils.getLocalIpAddress() + ":" + MyAndServer.PORT;
         StringBuffer msg = new StringBuffer();
         msg.append("http://" + ip + "/test\n");
         msg.append("http://" + ip + "/ping\n");

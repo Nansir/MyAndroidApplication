@@ -1,12 +1,11 @@
 package com.sir.app.base.tools;
 
+import android.content.Context;
 import android.util.TypedValue;
 
 /***
  * 常用单位转换的辅助类
- *
- * @author zhuyinan
- * @date 2015-12-8
+ *Created by zhuyinan on 2016/12/8.
  */
 public class ToolDensity extends BaseTool {
     /**
@@ -15,7 +14,7 @@ public class ToolDensity extends BaseTool {
      * @param dpVal
      * @return
      */
-    public static int dp2px(float dpVal) {
+    public static int dp2px(Context mContext,float dpVal) {
         return (int) TypedValue.applyDimension(TypedValue.COMPLEX_UNIT_DIP,
                 dpVal, mContext.getResources().getDisplayMetrics());
     }
@@ -26,7 +25,7 @@ public class ToolDensity extends BaseTool {
      * @param spVal
      * @return
      */
-    public static int sp2px(float spVal) {
+    public static int sp2px(Context mContext,float spVal) {
         return (int) TypedValue.applyDimension(TypedValue.COMPLEX_UNIT_SP,
                 spVal, mContext.getResources().getDisplayMetrics());
     }
@@ -37,7 +36,7 @@ public class ToolDensity extends BaseTool {
      * @param pxVal
      * @return
      */
-    public static float px2dp(float pxVal) {
+    public static float px2dp(Context mContext,float pxVal) {
         final float scale = mContext.getResources().getDisplayMetrics().density;
         return (pxVal / scale);
     }
