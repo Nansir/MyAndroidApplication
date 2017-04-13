@@ -12,7 +12,7 @@ import butterknife.ButterKnife;
 
 /**
  * Fragment基类(V4包)
- *  Created by zhuyinan on 2016/4/25.
+ * Created by zhuyinan on 2016/4/25.
  * Contact by 445181052@qq.com
  */
 public abstract class BaseFragmentV4 extends Fragment implements IBaseFragment {
@@ -26,7 +26,12 @@ public abstract class BaseFragmentV4 extends Fragment implements IBaseFragment {
      **/
     private Operation mBaseOperation = null;
 
-    private boolean hasFetchData; // 标识已经触发过懒加载数据
+    /**
+     * 懒加载标识
+     */
+    private boolean isVisible = false;
+    private boolean isInitView = false;
+    private boolean isFirstLoad = true;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
@@ -40,9 +45,13 @@ public abstract class BaseFragmentV4 extends Fragment implements IBaseFragment {
         } else {
             mContextView = inflater.inflate(bindLayout(), null);
             //初始化ButterKnife
-            ButterKnife.bind(this,mContextView);
+            ButterKnife.bind(this, mContextView);
             // 控件初始化
             initView(mContextView);
+            //业务处理操作
+            doBusiness(getActivity());
+            isInitView = true;
+            lazyLoad();
             //实例化共通操作
             mBaseOperation = new Operation(getActivity());
         }
@@ -50,15 +59,23 @@ public abstract class BaseFragmentV4 extends Fragment implements IBaseFragment {
     }
 
     @Override
-    public void onViewCreated(View view, @Nullable Bundle savedInstanceState) {
-        super.onViewCreated(view, savedInstanceState);
-        //业务处理操作
-        doBusiness(getActivity());
-        //视图已经准备完毕进行懒加载
-        if (getUserVisibleHint() && !hasFetchData) {
-            hasFetchData = true;
-            lazyFetchData();
+    public void setUserVisibleHint(boolean isVisibleToUser) {
+        super.setUserVisibleHint(isVisibleToUser);
+        if (isVisibleToUser) {
+            isVisible = true;
+            lazyLoad();
+        } else {
+            isVisible = false;
         }
+    }
+
+    private void lazyLoad() {
+        if (!isFirstLoad || !isVisible || !isInitView) {
+            //如果不是第一次加载，不是可见，不是初始化View，则不加载数据
+            return;
+        }
+        lazyFetchData();//第一次开始加载数据
+        isFirstLoad = false;//设置不是第一次加载
     }
 
     /**

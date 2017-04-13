@@ -6,6 +6,7 @@ import android.support.v7.widget.RecyclerView;
 import android.view.View;
 import android.view.ViewGroup;
 
+import com.nostra13.universalimageloader.core.DisplayImageOptions;
 import com.sir.app.base.listener.OnItemClickListener;
 
 import java.util.ArrayList;
@@ -216,6 +217,18 @@ public abstract class BaseRecyclerAdapter<T> extends RecyclerView.Adapter<ViewHo
         notifyItemMoved(fromPosition, toPosition);
     }
 
+    private DisplayImageOptions mOption;
+
+    public DisplayImageOptions getImageOptions() {
+        return getImageOptions(R.mipmap.ic_launcher, R.mipmap.ic_launcher, R.mipmap.ic_launcher);
+    }
+
+    public DisplayImageOptions getImageOptions(int onLoading, int onFail, int emptyUri) {
+        if (mOption == null) {
+            mOption = ((BaseApplication) BaseApplication.getContext()).getImageOptions(onLoading, onFail, emptyUri);
+        }
+        return mOption;
+    }
 
     /**
      * 清空数据
