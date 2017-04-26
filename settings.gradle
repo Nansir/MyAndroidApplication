@@ -1,10 +1,10 @@
-include ':library_ZXing', ':app_BTools', ':library_Expand'
+
+include ':app_APanel'
 include ':app_ASeven'
 include ':app_ASystemUi'
-include ':app_MD360'
+include ':app_BTools'
 
-include ':app_A'
-include ':app_AA'
+include ':app_MD360'
 include ':app_Web'
 
 include ':app_Message'
@@ -25,5 +25,7 @@ include ':library_Gridview'
 include ':library_MD360Player'
 include ':library_Player'
 include ':library_Vitamio'
+include ':library_ZXing'
+include ':library_Expand'
 include ':library_Mp3Recorder'
 include ':library_StateLayout'

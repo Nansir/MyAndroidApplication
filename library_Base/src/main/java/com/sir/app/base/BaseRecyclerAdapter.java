@@ -1,5 +1,8 @@
 package com.sir.app.base;
 
+import android.animation.Animator;
+import android.animation.AnimatorSet;
+import android.animation.ObjectAnimator;
 import android.app.Activity;
 import android.support.v4.util.SparseArrayCompat;
 import android.support.v7.widget.RecyclerView;
@@ -24,12 +27,12 @@ public abstract class BaseRecyclerAdapter<T> extends RecyclerView.Adapter<ViewHo
 
     protected Activity mContext;
     protected List<T> mDataList;
-    protected SparseArrayCompat<View> mFootViews;
-    protected SparseArrayCompat<View> mHeaderViews;
+
+    private boolean isShowAnim = true; // 是否播放item进入动画
+    private int mLastPosition = -1;
+
     protected OnItemClickListener listener;
 
-    private final int BASE_ITEM_TYPE_HEADER = 100000;
-    private final int BASE_ITEM_TYPE_FOOTER = 200000;
 
     private BaseRecyclerAdapter() {
 
@@ -62,48 +65,38 @@ public abstract class BaseRecyclerAdapter<T> extends RecyclerView.Adapter<ViewHo
                 return false;
             }
         });
+
+        //item进入动画
+        Animator[] animators = getAnimators(holder.itemView);
+        if (isShowAnim && animators != null && animators.length > 0
+                && holder.getAdapterPosition() > mLastPosition) {
+            if (animators.length > 1) {
+                AnimatorSet animatorSet = new AnimatorSet();
+                animatorSet.playTogether(animators);
+                animatorSet.start();
+            } else {
+                for (Animator animator : animators) {
+                    animator.start();
+                }
+            }
+            mLastPosition = holder.getAdapterPosition();
+        }
+    }
+
+    protected Animator[] getAnimators(View view) {
+        return new Animator[]{
+                ObjectAnimator.ofFloat(view, View.ALPHA, 0, 1f).setDuration(500),
+                ObjectAnimator.ofFloat(view, View.TRANSLATION_Y, 100, 0).setDuration(500)};
     }
 
     @Override
     public ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
-//        if (mHeaderViews.get(viewType) != null) {
-//            return ViewHolder.get(mHeaderViews.get(viewType));
-//        } else if (mFootViews.get(viewType) != null) {
-//            return ViewHolder.get(mFootViews.get(viewType));
-//        }
         return ViewHolder.get(mContext, bindLayout(), parent);
-    }
-
-//    @Override
-//    public int getItemViewType(int position) {
-//        if (isHeaderViewPos(position)) {
-//            return mHeaderViews.keyAt(position);
-//        } else if (isFooterViewPos(position)) {
-//            return mFootViews.keyAt(position - getHeadersCount() - getItemCount());
-//        }
-//        return super.getItemViewType(position);
-//    }
-
-    private boolean isHeaderViewPos(int position) {
-        return position < getHeadersCount();
-    }
-
-    private boolean isFooterViewPos(int position) {
-        return position >= getHeadersCount() + getItemCount();
-    }
-
-    public int getHeadersCount() {
-        return mHeaderViews == null ? 0 : mHeaderViews.size();
-    }
-
-
-    public int getFootersCount() {
-        return mFootViews == null ? 0 : mFootViews.size();
     }
 
     @Override
     public int getItemCount() {
-        return mDataList == null ? 0 : mDataList.size();// + getItemCount() + getFootersCount();
+        return mDataList == null ? 0 : mDataList.size();
     }
 
     public abstract void onBindHolder(ViewHolder holder, int position);
@@ -117,6 +110,7 @@ public abstract class BaseRecyclerAdapter<T> extends RecyclerView.Adapter<ViewHo
      */
     public void addItem(Collection<? extends T> list) {
         mDataList.addAll(list);
+        notifyItemChanged(list.size() - 1);
     }
 
     /**
@@ -127,16 +121,7 @@ public abstract class BaseRecyclerAdapter<T> extends RecyclerView.Adapter<ViewHo
      */
     public void updateItem(int position, T data) {
         mDataList.set(position, data);
-    }
-
-    /**
-     * 更新数据
-     *
-     * @param holder item对应的holder
-     * @param data   item的数据
-     */
-    public void updateItem(ViewHolder holder, T data) {
-        mDataList.set(holder.getLayoutPosition(), data);
+        notifyItemChanged(position);
     }
 
     /**
@@ -166,6 +151,7 @@ public abstract class BaseRecyclerAdapter<T> extends RecyclerView.Adapter<ViewHo
      */
     public void addItem(T data) {
         mDataList.add(data);
+        notifyItemInserted(getItemCount());
     }
 
     /**
@@ -175,6 +161,7 @@ public abstract class BaseRecyclerAdapter<T> extends RecyclerView.Adapter<ViewHo
      */
     public void addItem(T data, int position) {
         mDataList.add(position, data);
+        notifyItemInserted(position);
     }
 
     /**
@@ -184,18 +171,29 @@ public abstract class BaseRecyclerAdapter<T> extends RecyclerView.Adapter<ViewHo
      */
     public void appendList(Collection<? extends T> list) {
         mDataList.addAll(list);
+        notifyItemInserted(getItemCount());
     }
 
 
     /**
      * 删除数据Item
+     * 使用holder.getAdapterPosition()
+     * 获取location
      *
      * @param position
      */
     public void removeItem(int position) {
         mDataList.remove(position);
+        notifyItemRemoved(position);
     }
 
+    /**
+     * 清空数据
+     */
+    public void clear() {
+        mDataList.clear();
+        notifyDataSetChanged();
+    }
 
     /**
      * 移动Item
@@ -230,13 +228,6 @@ public abstract class BaseRecyclerAdapter<T> extends RecyclerView.Adapter<ViewHo
         return mOption;
     }
 
-    /**
-     * 清空数据
-     */
-    public void clear() {
-        mDataList.clear();
-    }
-
 
     /**
      * 设置点击监听
@@ -248,27 +239,4 @@ public abstract class BaseRecyclerAdapter<T> extends RecyclerView.Adapter<ViewHo
     }
 
 
-    /**
-     * 添加标题视图
-     *
-     * @param view
-     */
-    public void addHeaderView(View view) {
-        if (mHeaderViews == null) {
-            mHeaderViews = new SparseArrayCompat<>();
-        }
-        mHeaderViews.put(mHeaderViews.size() + BASE_ITEM_TYPE_HEADER, view);
-    }
-
-    /**
-     * 添加脚视图
-     *
-     * @param view
-     */
-    public void addFootView(View view) {
-        if (mFootViews == null) {
-            mFootViews = new SparseArrayCompat<>();
-        }
-        mFootViews.put(mFootViews.size() + BASE_ITEM_TYPE_FOOTER, view);
-    }
 }

@@ -127,6 +127,6 @@ public class MainActivity extends BaseActivity
     public void scanCode(Intent data) {
         Bundle build = data.getExtras();
         String url = build.getString("result");
-        ToolAlert.showShort(url);
+        ToolAlert.showShort(getContext(),url);
     }
 }

@@ -145,7 +145,7 @@ public class MainActivity extends BaseActivity implements NavigationView.OnNavig
 
 
     @OnClick({R.id.btn_ExpandableList, R.id.btn_RecyclerView, R.id.btn_ListView
-            , R.id.btn_Otto,R.id.btn_Expand})
+            , R.id.btn_Otto,R.id.btn_Expand,R.id.btn_FABTool,R.id.btn_ScreenSwitch})
     public void onclick_btn(View view) {
         switch (view.getId()) {
             case R.id.btn_ExpandableList:
@@ -162,6 +162,12 @@ public class MainActivity extends BaseActivity implements NavigationView.OnNavig
                 break;
             case R.id.btn_Expand:
                 getOperation().forward(ExpandActivity.class);
+                break;
+            case R.id.btn_FABTool:
+                getOperation().forward(FABToolActivity.class);
+                break;
+            case R.id.btn_ScreenSwitch:
+                getOperation().forward(ScreenSwitchActivity.class);
                 break;
 
         }

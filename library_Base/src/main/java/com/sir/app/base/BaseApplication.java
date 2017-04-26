@@ -152,7 +152,7 @@ public class BaseApplication extends Application {
     /******************************************************* Application图片加载操作API（开始） ********************************************************/
 
     public DisplayImageOptions getImageOptions() {
-        return getImageOptions(R.mipmap.ic_launcher, R.mipmap.ic_launcher, R.mipmap.ic_launcher);
+        return getImageOptions(R.mipmap.ic_fap, R.mipmap.ic_fao, R.mipmap.ic_fao);
     }
 
     public DisplayImageOptions getImageOptions(int onLoadId, int onFailId, int emptyUriId) {
@@ -166,7 +166,7 @@ public class BaseApplication extends Application {
                     .considerExifParams(false) // default
                     .imageScaleType(ImageScaleType.IN_SAMPLE_POWER_OF_2) // default
                     .bitmapConfig(Bitmap.Config.RGB_565) // /设置图片的解码类型
-                    .displayer(new RoundedBitmapDisplayer(20));//设置图片的显示方式
+                    .displayer(new RoundedBitmapDisplayer(10));//设置图片的显示方式
             //RoundedBitmapDisplayer设置成圆角图片
             //FadeInBitmapDisplayer设置图片渐显的时间
             //SimpleBitmapDisplayer正常显示一张图片

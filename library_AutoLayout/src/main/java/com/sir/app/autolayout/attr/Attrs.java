@@ -2,11 +2,9 @@ package com.sir.app.autolayout.attr;
 
 /**
  * Created by zhy on 15/12/5.
- * <p/>
  * 与attrs.xml中数值对应
  */
-public interface Attrs
-{
+public interface Attrs {
     public static final int WIDTH = 1;
     public static final int HEIGHT = WIDTH << 1;
     public static final int TEXTSIZE = HEIGHT << 1;

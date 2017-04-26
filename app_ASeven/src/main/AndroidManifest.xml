@@ -44,13 +44,21 @@
             android:name=".ListViewActivity"
             android:label="ListView" />
 
-        <activity android:name=".OttoActivity"
-            android:label="Otto"/>
+        <activity
+            android:name=".OttoActivity"
+            android:label="Otto" />
 
 
         <activity android:name=".ExpandActivity"
 
             />
+        <activity
+            android:name=".FABToolActivity"
+            android:label="FABTool" />
+
+        <activity
+            android:name=".ScreenSwitchActivity"
+            android:label="ScreenSwitch" />
 
     </application>
 

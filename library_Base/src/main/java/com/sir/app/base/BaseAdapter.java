@@ -171,7 +171,10 @@ public abstract class BaseAdapter<T> extends android.widget.BaseAdapter implemen
     private DisplayImageOptions mOption;
 
     public DisplayImageOptions getImageOptions() {
-        return getImageOptions(R.mipmap.ic_launcher, R.mipmap.ic_launcher, R.mipmap.ic_launcher);
+        if (mOption == null) {
+            mOption = ((BaseApplication) BaseApplication.getContext()).getImageOptions();
+        }
+        return mOption;
     }
 
     public DisplayImageOptions getImageOptions(int onLoading, int onFail, int emptyUri) {

@@ -23,28 +23,27 @@ import android.view.View;
 import android.view.ViewGroup;
 
 import com.sir.app.autolayout.AutoLayoutInfo;
-import com.sir.app.autolayout.attr.MarginAttr;
-import com.sir.app.autolayout.attr.MarginBottomAttr;
-import com.sir.app.autolayout.attr.MaxHeightAttr;
-import com.sir.app.autolayout.attr.PaddingAttr;
-import com.sir.app.autolayout.attr.PaddingBottomAttr;
-import com.sir.app.autolayout.attr.PaddingRightAttr;
-import com.sir.app.autolayout.attr.TextSizeAttr;
-import com.sir.app.autolayout.attr.WidthAttr;
 import com.sir.app.autolayout.R;
 import com.sir.app.autolayout.attr.HeightAttr;
+import com.sir.app.autolayout.attr.MarginAttr;
+import com.sir.app.autolayout.attr.MarginBottomAttr;
 import com.sir.app.autolayout.attr.MarginLeftAttr;
 import com.sir.app.autolayout.attr.MarginRightAttr;
 import com.sir.app.autolayout.attr.MarginTopAttr;
+import com.sir.app.autolayout.attr.MaxHeightAttr;
 import com.sir.app.autolayout.attr.MaxWidthAttr;
 import com.sir.app.autolayout.attr.MinHeightAttr;
 import com.sir.app.autolayout.attr.MinWidthAttr;
+import com.sir.app.autolayout.attr.PaddingAttr;
+import com.sir.app.autolayout.attr.PaddingBottomAttr;
 import com.sir.app.autolayout.attr.PaddingLeftAttr;
+import com.sir.app.autolayout.attr.PaddingRightAttr;
 import com.sir.app.autolayout.attr.PaddingTopAttr;
+import com.sir.app.autolayout.attr.TextSizeAttr;
+import com.sir.app.autolayout.attr.WidthAttr;
 import com.sir.app.autolayout.config.AutoLayoutConifg;
 
-public class AutoLayoutHelper
-{
+public class AutoLayoutHelper {
     private final ViewGroup mHost;
 
     private static final int[] LL = new int[]
@@ -94,39 +93,32 @@ public class AutoLayoutHelper
      */
     private static AutoLayoutConifg mAutoLayoutConifg;
 
-    public AutoLayoutHelper(ViewGroup host)
-    {
+    public AutoLayoutHelper(ViewGroup host) {
         mHost = host;
 
-        if (mAutoLayoutConifg == null)
-        {
+        if (mAutoLayoutConifg == null) {
             initAutoLayoutConfig(host);
         }
 
     }
 
-    private void initAutoLayoutConfig(ViewGroup host)
-    {
+    private void initAutoLayoutConfig(ViewGroup host) {
         mAutoLayoutConifg = AutoLayoutConifg.getInstance();
         mAutoLayoutConifg.init(host.getContext());
     }
 
 
-    public void adjustChildren()
-    {
+    public void adjustChildren() {
         AutoLayoutConifg.getInstance().checkParams();
 
-        for (int i = 0, n = mHost.getChildCount(); i < n; i++)
-        {
+        for (int i = 0, n = mHost.getChildCount(); i < n; i++) {
             View view = mHost.getChildAt(i);
             ViewGroup.LayoutParams params = view.getLayoutParams();
 
-            if (params instanceof AutoLayoutParams)
-            {
+            if (params instanceof AutoLayoutParams) {
                 AutoLayoutInfo info =
                         ((AutoLayoutParams) params).getAutoLayoutInfo();
-                if (info != null)
-                {
+                if (info != null) {
                     info.fillAttrs(view);
                 }
             }
@@ -135,8 +127,7 @@ public class AutoLayoutHelper
     }
 
     public static AutoLayoutInfo getAutoLayoutInfo(Context context,
-                                                   AttributeSet attrs)
-    {
+                                                   AttributeSet attrs) {
 
         AutoLayoutInfo info = new AutoLayoutInfo();
 
@@ -150,8 +141,7 @@ public class AutoLayoutHelper
         int n = array.getIndexCount();
 
 
-        for (int i = 0; i < n; i++)
-        {
+        for (int i = 0; i < n; i++) {
             int index = array.getIndex(i);
 //            String val = array.getString(index);
 //            if (!isPxVal(val)) continue;
@@ -159,15 +149,13 @@ public class AutoLayoutHelper
             if (!DimenUtils.isPxVal(array.peekValue(index))) continue;
 
             int pxVal = 0;
-            try
-            {
+            try {
                 pxVal = array.getDimensionPixelOffset(index, 0);
             } catch (Exception ignore)//not dimension
             {
                 continue;
             }
-            switch (index)
-            {
+            switch (index) {
                 case INDEX_TEXT_SIZE:
                     info.addAttr(new TextSizeAttr(pxVal, baseWidth, baseHeight));
                     break;
@@ -225,8 +213,7 @@ public class AutoLayoutHelper
         return info;
     }
 
-    public interface AutoLayoutParams
-    {
+    public interface AutoLayoutParams {
         AutoLayoutInfo getAutoLayoutInfo();
     }
 }

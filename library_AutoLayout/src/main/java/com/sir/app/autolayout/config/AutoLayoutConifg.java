@@ -9,8 +9,7 @@ import com.sir.app.autolayout.utils.ScreenUtils;
 /**
  * Created by zhy on 15/11/18.
  */
-public class AutoLayoutConifg
-{
+public class AutoLayoutConifg {
 
     private static AutoLayoutConifg sIntance = new AutoLayoutConifg();
 
@@ -27,55 +26,45 @@ public class AutoLayoutConifg
     private boolean useDeviceSize;
 
 
-    private AutoLayoutConifg()
-    {
+    private AutoLayoutConifg() {
     }
 
-    public void checkParams()
-    {
-        if (mDesignHeight <= 0 || mDesignWidth <= 0)
-        {
+    public void checkParams() {
+        if (mDesignHeight <= 0 || mDesignWidth <= 0) {
             throw new RuntimeException(
                     "you must set " + KEY_DESIGN_WIDTH + " and " + KEY_DESIGN_HEIGHT + "  in your manifest file.");
         }
     }
 
-    public AutoLayoutConifg useDeviceSize()
-    {
+    public AutoLayoutConifg useDeviceSize() {
         useDeviceSize = true;
         return this;
     }
 
 
-    public static AutoLayoutConifg getInstance()
-    {
+    public static AutoLayoutConifg getInstance() {
         return sIntance;
     }
 
 
-    public int getScreenWidth()
-    {
+    public int getScreenWidth() {
         return mScreenWidth;
     }
 
-    public int getScreenHeight()
-    {
+    public int getScreenHeight() {
         return mScreenHeight;
     }
 
-    public int getDesignWidth()
-    {
+    public int getDesignWidth() {
         return mDesignWidth;
     }
 
-    public int getDesignHeight()
-    {
+    public int getDesignHeight() {
         return mDesignHeight;
     }
 
 
-    public void init(Context context)
-    {
+    public void init(Context context) {
         getMetaData(context);
 
         int[] screenSize = ScreenUtils.getScreenSize(context, useDeviceSize);
@@ -83,21 +72,17 @@ public class AutoLayoutConifg
         mScreenHeight = screenSize[1];
     }
 
-    private void getMetaData(Context context)
-    {
+    private void getMetaData(Context context) {
         PackageManager packageManager = context.getPackageManager();
         ApplicationInfo applicationInfo;
-        try
-        {
+        try {
             applicationInfo = packageManager.getApplicationInfo(context
                     .getPackageName(), PackageManager.GET_META_DATA);
-            if (applicationInfo != null && applicationInfo.metaData != null)
-            {
+            if (applicationInfo != null && applicationInfo.metaData != null) {
                 mDesignWidth = (int) applicationInfo.metaData.get(KEY_DESIGN_WIDTH);
                 mDesignHeight = (int) applicationInfo.metaData.get(KEY_DESIGN_HEIGHT);
             }
-        } catch (PackageManager.NameNotFoundException e)
-        {
+        } catch (PackageManager.NameNotFoundException e) {
             throw new RuntimeException(
                     "you must set " + KEY_DESIGN_WIDTH + " and " + KEY_DESIGN_HEIGHT + "  in your manifest file.", e);
         }

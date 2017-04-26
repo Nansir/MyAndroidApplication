@@ -28,5 +28,6 @@ dependencies {
     compile 'com.kyleduo.switchbutton:library:1.2.9'
     compile project(':library_Base')
     compile project(':library_Expand')
+    compile project(':library_Widget')
 
 }
