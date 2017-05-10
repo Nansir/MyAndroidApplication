@@ -12,20 +12,25 @@
         <include layout="@layout/layout_menu" />
     </RelativeLayout>
 
-    <RelativeLayout
+    <LinearLayout
         android:layout_width="match_parent"
-        android:background="@android:color/white"
-        android:layout_height="match_parent">
+        android:layout_height="match_parent"
+        android:background="@color/white"
+        android:fitsSystemWindows="true">
 
         <include layout="@layout/item_toolbar" />
 
-        <Button
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_centerInParent="true"
-            android:onClick="toggleMenu"
-            android:text="显示菜单" />
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
 
-    </RelativeLayout>
+            <Button
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerInParent="true"
+                android:onClick="toggleMenu"
+                android:text="显示菜单" />
+        </RelativeLayout>
+    </LinearLayout>
 
 </com.sir.app.aa.widget.ResideLayout>

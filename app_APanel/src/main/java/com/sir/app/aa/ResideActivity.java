@@ -24,6 +24,7 @@ public class ResideActivity extends BaseActivity {
 
     @Override
     public int bindLayout() {
+        setTranslucentTheme();
         return R.layout.activity_reside;
     }
 
@@ -38,7 +39,7 @@ public class ResideActivity extends BaseActivity {
 
     @Override
     public void doBusiness(Context mContext) {
-
+        resideLayout.setEnabled(false);
     }
 
     public void toggleMenu(View view) {
