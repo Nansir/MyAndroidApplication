@@ -94,5 +94,4 @@ public abstract class BaseFragmentV4 extends Fragment implements IBaseFragment {
         super.onDestroy();
         ButterKnife.unbind(this);//解绑
     }
-
 }

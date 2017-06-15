@@ -6,7 +6,7 @@ import android.view.View;
 
 import com.sir.app.base.BaseActivity;
 import com.sir.app.base.event.BusProvider;
-import com.sir.app.base.event.DataChangedEvent;
+import com.sir.app.base.event.BusEvent;
 import com.squareup.otto.Produce;
 import com.squareup.otto.Subscribe;
 
@@ -36,7 +36,7 @@ public class OttoActivity extends BaseActivity {
 
     @OnClick(R.id.btn_Otto)
     public void onclick_otto(View view) {
-        BusProvider.getBusInstance().post(new DataChangedEvent("this is sendAnEvent"));
+        BusProvider.getBusInstance().post(new BusEvent("this is sendAnEvent"));
     }
 
     @Override
@@ -59,15 +59,15 @@ public class OttoActivity extends BaseActivity {
     }
 
     @Subscribe   //订阅事件DataChangedEvent
-    public void sayGoodOnEvent(final DataChangedEvent event) {
-        Log.e("event", "good " + event.getContent());
+    public void sayGoodOnEvent(final BusEvent event) {
+        Log.e("event", "good " + event.jsonStr);
     }
 
     @Produce    //产生事件
-    public DataChangedEvent produceDataChangedEvent() {
+    public BusEvent produceDataChangedEvent() {
         //启动执行一次
         Log.e("event", "启动执行 produceDataChangedEvent");
-        return new DataChangedEvent("this is sendAnEvent");
+        return new BusEvent("this is sendAnEvent");
     }
 
 }

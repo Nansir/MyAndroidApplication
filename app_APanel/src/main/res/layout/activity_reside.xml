@@ -1,4 +1,4 @@
-<com.sir.app.aa.widget.ResideLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<com.sir.app.panel.widget.ResideLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:id="@+id/resideLayout"
     android:layout_width="match_parent"
     android:layout_height="match_parent">
@@ -33,4 +33,4 @@
         </RelativeLayout>
     </LinearLayout>
 
-</com.sir.app.aa.widget.ResideLayout>
+</com.sir.app.panel.widget.ResideLayout>

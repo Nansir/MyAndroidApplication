@@ -16,8 +16,7 @@ import android.widget.SeekBar;
 
 import com.sir.app.base.BaseActivity;
 import com.sir.app.base.event.BusProvider;
-import com.sir.app.base.event.DataChangedEvent;
-import com.sir.app.base.tools.ToolAlert;
+import com.sir.app.base.event.BusEvent;
 import com.sir.app.base.tools.ToolSnackbar;
 import com.sir.app.robot.aseven.widget.WrapLayout;
 import com.squareup.otto.Subscribe;
@@ -94,8 +93,8 @@ public class MainActivity extends BaseActivity implements NavigationView.OnNavig
     }
 
     @Subscribe   //订阅事件DataChangedEvent
-    public void sayGoodOnEvent(final DataChangedEvent event) {
-        Log.e("event", "MainActivity " + event.getContent());
+    public void sayGoodOnEvent(final BusEvent event) {
+        Log.e("event", "MainActivity " + event.jsonStr);
     }
 
     @Override

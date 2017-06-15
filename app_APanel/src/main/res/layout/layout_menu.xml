@@ -2,7 +2,7 @@
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/colorAccent">
+    android:background="@color/colorPrimary">
 
     <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
         android:layout_width="wrap_content"
@@ -16,12 +16,12 @@
 
             <ImageView
                 android:id="@+id/one"
-                android:layout_width="50dp"
-                android:layout_height="50dp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
                 android:layout_centerVertical="true"
                 android:layout_marginLeft="20dp"
                 android:layout_marginTop="20dp"
-                android:src="@mipmap/img_1" />
+                android:src="@mipmap/ic_account_outline_grey600_24dp" />
 
             <TextView
                 android:layout_width="wrap_content"
@@ -40,15 +40,15 @@
 
             <ImageView
                 android:id="@+id/two"
-                android:layout_width="50dp"
-                android:layout_height="50dp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
                 android:layout_centerVertical="true"
                 android:layout_marginLeft="20dp"
                 android:layout_marginTop="20dp"
-                android:src="@mipmap/img_2" />
+                android:src="@mipmap/ic_cart_outline_grey600_24dp" />
 
             <TextView
-                android:layout_width="fill_parent"
+                android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_centerVertical="true"
                 android:layout_marginLeft="20dp"
@@ -64,12 +64,12 @@
 
             <ImageView
                 android:id="@+id/three"
-                android:layout_width="50dp"
-                android:layout_height="50dp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
                 android:layout_centerVertical="true"
                 android:layout_marginLeft="20dp"
                 android:layout_marginTop="20dp"
-                android:src="@mipmap/img_3" />
+                android:src="@mipmap/ic_email_outline_grey600_24dp" />
 
             <TextView
                 android:layout_width="wrap_content"
@@ -88,12 +88,12 @@
 
             <ImageView
                 android:id="@+id/four"
-                android:layout_width="50dp"
-                android:layout_height="50dp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
                 android:layout_centerVertical="true"
                 android:layout_marginLeft="20dp"
                 android:layout_marginTop="20dp"
-                android:src="@mipmap/img_4" />
+                android:src="@mipmap/ic_home_outline_grey600_24dp" />
 
             <TextView
                 android:layout_width="wrap_content"
@@ -112,12 +112,12 @@
 
             <ImageView
                 android:id="@+id/five"
-                android:layout_width="50dp"
-                android:layout_height="50dp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
                 android:layout_centerVertical="true"
                 android:layout_marginLeft="20dp"
                 android:layout_marginTop="20dp"
-                android:src="@mipmap/img_5" />
+                android:src="@mipmap/ic_logout_grey600_24dp" />
 
             <TextView
                 android:layout_width="fill_parent"
@@ -128,6 +128,8 @@
                 android:text="第5个Item"
                 android:textColor="#f0f0f0"
                 android:textSize="20sp" />
+
+
         </RelativeLayout>
     </LinearLayout>
 

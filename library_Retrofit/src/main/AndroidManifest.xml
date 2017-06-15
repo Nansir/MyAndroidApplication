@@ -1,0 +1,24 @@
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    package="com.sir.app.retrofit.retrofit">
+
+    <!--网络权限-->
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
+    <uses-permission android:name="android.permission.ACCESS_WIFI_STATE" />
+    <uses-permission android:name="android.permission.INTERNET" />
+
+    <application
+        android:allowBackup="true"
+        android:label="@string/app_name"
+        android:supportsRtl="true">
+
+        <receiver android:name="com.sir.app.retrofit.net.download.NotificationReceiver">
+            <intent-filter>
+                <action android:name="notification_clicked" />
+            </intent-filter>
+        </receiver>
+
+        <service android:name="com.sir.app.retrofit.net.download.DownLoadService"></service>
+
+    </application>
+
+</manifest>

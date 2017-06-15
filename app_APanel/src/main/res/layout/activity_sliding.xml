@@ -1,4 +1,4 @@
-<com.sir.app.aa.widget.SlidingLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<com.sir.app.panel.widget.SlidingLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:id="@+id/id_menu"
     android:layout_width="wrap_content"
@@ -16,4 +16,4 @@
         <include layout="@layout/content_main" />
     </LinearLayout>
 
-</com.sir.app.aa.widget.SlidingLayout>
+</com.sir.app.panel.widget.SlidingLayout>
